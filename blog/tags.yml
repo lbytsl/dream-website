@@ -1,0 +1,24 @@
+ai-engineering:
+  label: AI Engineering
+  permalink: /ai-engineering
+  description: AI 工程实践相关文章
+
+prompt-engineering:
+  label: Prompt Engineering
+  permalink: /prompt-engineering
+  description: Prompt 工程相关文章
+
+rag:
+  label: RAG
+  permalink: /rag
+  description: 检索增强生成相关文章
+
+tools:
+  label: Tools
+  permalink: /tools
+  description: AI 工具推荐相关文章
+
+tutorial:
+  label: Tutorial
+  permalink: /tutorial
+  description: AI 开发教程

@@ -1,0 +1,44 @@
+---
+sidebar_position: 2
+title: 代码生成
+description: AI 代码生成 Prompt 模板
+---
+
+# 代码生成
+
+高质量代码生成 Prompt，适用于 Cursor、Copilot 等 AI 编程工具。
+
+## 适用模型
+
+- Cursor (Claude 3.5 / GPT-4)
+- GitHub Copilot
+- Codex
+
+## Prompt 内容
+
+```text
+你是一名专家级 [语言] 开发者。
+
+任务：[描述功能需求]
+
+技术栈：
+- 语言/框架：[TypeScript / React / Next.js]
+- 状态管理：[Zustand / Jotai]
+- 样式方案：[Tailwind CSS / CSS Modules]
+
+要求：
+1. 类型安全（TypeScript Strict Mode）
+2. 错误边界处理
+3. 可访问性（a11y）
+4. 响应式设计
+5. 性能优化（memo、useMemo、lazy loading）
+6. 给出使用示例
+
+请先描述实现方案，再编写代码。
+```
+
+## 注意事项
+
+- 在 Cursor 中使用 `.cursorrules` 文件设定默认规则
+- 生成大型功能时先让 AI 列出文件结构
+- 要求 AI 解释关键设计决策

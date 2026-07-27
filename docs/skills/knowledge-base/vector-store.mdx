@@ -1,0 +1,46 @@
+---
+sidebar_position: 3
+title: 向量存储
+description: 向量数据库选型与最佳实践
+---
+
+# 向量存储
+
+向量数据库选型和最佳实践指南。
+
+## 选型对比
+
+| 数据库 | 类型 | 适用场景 | 特点 |
+|--------|------|----------|------|
+| Chroma | 嵌入式 | 原型开发 | 轻量级，Python 友好 |
+| Milvus | 独立服务 | 生产环境 | 高性能，分布式 |
+| Pinecone | 云服务 | 快速部署 | 免运维 |
+| Qdrant | 独立服务 | 中等规模 | Rust 实现，性能优良 |
+| Weaviate | 独立服务 | 多模态 | 原生支持多种数据类型 |
+
+## 安装 (Chroma)
+
+```bash
+pip install chromadb
+```
+
+## 示例
+
+```python
+import chromadb
+
+client = chromadb.PersistentClient(path="./vector_db")
+collection = client.create_collection(name="knowledge_base")
+
+collection.add(
+    documents=["Document content here..."],
+    metadatas=[{"source": "doc1.pdf", "page": 1}],
+    ids=["doc_1"]
+)
+```
+
+## 注意事项
+
+- 选择与数据规模匹配的方案
+- 定期备份向量数据
+- 监控查询延迟和召回率

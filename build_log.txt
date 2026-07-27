@@ -1,0 +1,21 @@
+[INFO] [zh-CN] Creating an optimized production build...
+
+[ERROR] Error: Unable to build website for locale zh-CN.
+    at tryToBuildLocale (d:\AI_code\dream-website\node_modules\@docusaurus\core\lib\commands\build\build.js:76:15)
+    at async d:\AI_code\dream-website\node_modules\@docusaurus\core\lib\commands\build\build.js:34:9
+    at async mapAsyncSequential (d:\AI_code\dream-website\node_modules\@docusaurus\utils\lib\jsUtils.js:21:24)
+    at async Command.build (d:\AI_code\dream-website\node_modules\@docusaurus\core\lib\commands\build\build.js:33:5)
+    at async Promise.all (index 0)
+    at async runCLI (d:\AI_code\dream-website\node_modules\@docusaurus\core\lib\commands\cli.js:56:5)
+    at async file:///d:/AI_code/dream-website/node_modules/@docusaurus/core/bin/docusaurus.mjs:44:3 {
+  [cause]: Error: This Docusaurus site is outside any Git worktree.
+  Unable to read Git info for file "src/pages/about.tsx" 
+      at getGitFileInfo (d:\AI_code\dream-website\node_modules\@docusaurus\utils\lib\vcs\vcsGitEager.js:55:19)
+      at async Object.getFileLastUpdateInfo (d:\AI_code\dream-website\node_modules\@docusaurus\utils\lib\vcs\vcsGitEager.js:82:30)
+      at async getRouteLastUpdatedAt (d:\AI_code\dream-website\node_modules\@docusaurus\plugin-sitemap\lib\createSitemapItem.js:23:32)
+      at async getRouteLastmod (d:\AI_code\dream-website\node_modules\@docusaurus\plugin-sitemap\lib\createSitemapItem.js:40:28)
+      at async createSitemapItem (d:\AI_code\dream-website\node_modules\@docusaurus\plugin-sitemap\lib\createSitemapItem.js:55:18)
+      at async Promise.all (index 0)
+}
+[INFO] Docusaurus version: 3.10.2
+Node version: v20.19.6

@@ -1,0 +1,57 @@
+---
+sidebar_position: 3
+title: 测试生成
+description: AI 自动生成单元测试
+---
+
+# 测试生成
+
+使用 AI 自动生成高质量的单元测试。
+
+## 安装
+
+```bash
+npm install -D vitest @testing-library/react
+```
+
+## Prompt
+
+```text
+为以下代码生成全面的单元测试：
+
+要求：
+1. 使用 vitest 框架
+2. 覆盖正常流程和边界情况
+3. 包含错误处理测试
+4. Mock 外部依赖
+5. 测试命名清晰有描述性
+
+代码：
+[粘贴代码]
+```
+
+## 示例
+
+```typescript
+// Input
+function formatDate(date: Date): string {
+  return date.toISOString().split('T')[0];
+}
+
+// Generated Test
+describe('formatDate', () => {
+  it('should format valid date correctly', () => {
+    expect(formatDate(new Date('2024-01-15'))).toBe('2024-01-15');
+  });
+
+  it('should handle leap year dates', () => {
+    expect(formatDate(new Date('2024-02-29'))).toBe('2024-02-29');
+  });
+});
+```
+
+## 注意事项
+
+- 生成测试后人工审查测试逻辑
+- 关注测试的边界条件覆盖
+- 避免测试依赖外部状态

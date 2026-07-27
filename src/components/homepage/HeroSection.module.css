@@ -1,0 +1,224 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: 6rem 1.5rem 4rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: var(--ai-accent-soft);
+  border: 1px solid var(--ai-border);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ifm-color-primary);
+  margin-bottom: 2rem;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+  color: var(--ai-text-primary);
+}
+
+.heroHighlight {
+  background: var(--ai-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--ai-text-secondary);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.heroActions :global(.button) {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.heroActions :global(.button--primary) {
+  background: var(--ai-gradient);
+  border: none;
+  color: #fff;
+  padding: 0.8rem 2rem;
+}
+
+.heroActions :global(.button--primary:hover) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+  color: #fff;
+}
+
+.heroActions :global(.button--secondary) {
+  border: 2px solid var(--ai-border);
+  background: var(--ai-bg-card);
+  color: var(--ai-text-primary);
+  padding: 0.8rem 2rem;
+}
+
+.heroActions :global(.button--secondary:hover) {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+/* Stats */
+.heroStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.statNumber {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ai-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: var(--ai-text-secondary);
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: var(--ai-border);
+}
+
+/* Background */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heroGlow {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.12) 0%,
+    rgba(139, 92, 246, 0.05) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--ai-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ai-border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.3;
+  mask-image: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 70%
+  );
+}
+
+/* ============================================================
+ * Responsive
+ * ============================================================ */
+@media (max-width: 996px) {
+  .hero {
+    padding: 4rem 1rem 3rem;
+  }
+  .heroTitle {
+    font-size: 2.25rem;
+  }
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  .heroStats {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .heroActions :global(.button) {
+    width: 100%;
+    justify-content: center;
+  }
+  .heroStats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .statDivider {
+    width: 40px;
+    height: 1px;
+  }
+}

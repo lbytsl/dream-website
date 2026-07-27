@@ -1,0 +1,188 @@
+.page {
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+}
+
+/* Profile */
+.profile {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.avatar {
+  margin-bottom: 1.5rem;
+}
+
+.avatarPlaceholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--ai-accent-soft);
+  border: 2px solid var(--ai-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ifm-color-primary);
+  margin: 0 auto;
+}
+
+.name {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.bio {
+  color: var(--ai-text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto 1.5rem;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ai-text-secondary);
+  border: 1px solid var(--ai-border);
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.socialLink:hover {
+  color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 3.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ai-border);
+}
+
+/* Tech Stack */
+.techGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.techBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: var(--ai-accent-soft);
+  color: var(--ifm-color-primary);
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.techBadge:hover {
+  border-color: var(--ifm-color-primary-light);
+}
+
+/* Open Source Projects */
+.projectGrid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.projectCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  background: var(--ai-bg-card);
+  border: 1px solid var(--ai-border);
+  transition: all 0.2s ease;
+}
+
+.projectCard:hover {
+  border-color: var(--ifm-color-primary-light);
+  box-shadow: var(--ai-card-shadow-hover);
+}
+
+.projectIcon {
+  color: var(--ifm-color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.projectName {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.projectDesc {
+  font-size: 0.85rem;
+  color: var(--ai-text-secondary);
+  margin: 0;
+}
+
+/* Contact */
+.contactText {
+  color: var(--ai-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.contactLinks :global(.button) {
+  border-radius: 10px;
+  font-weight: 600;
+  background: var(--ai-gradient);
+  border: none;
+  padding: 0.75rem 2rem;
+  color: #fff;
+}
+
+.contactLinks :global(.button:hover) {
+  opacity: 0.9;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container {
+    padding: 3rem 1rem 2rem;
+  }
+  .name {
+    font-size: 1.75rem;
+  }
+}
