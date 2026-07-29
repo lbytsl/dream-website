@@ -1,0 +1,14 @@
+[
+  {
+    "title": "PromptOps：为什么你的 RAG Prompt 需要工程化质量保障",
+    "date": "2026-07-29",
+    "slug": "promptops",
+    "tags": [
+      "prompt-engineering",
+      "promptops",
+      "rag"
+    ],
+    "description": "介绍 PromptOps 的核心能力——Prompt 质量审计、可靠性工程、安全优化、版本比较和测试",
+    "cover": "/img/blog-covers/PromptOps-cover.png"
+  }
+]

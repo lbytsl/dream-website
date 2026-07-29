@@ -1,10 +1,8 @@
-aihub:
-  name: AI Developer
-  title: AI Developer & Tech Writer
-  url: https://github.com/your-github-username
-  image_url: https://github.com/your-github-username.png
+lbytsl:
+  name: lbytsl
+  title: AI全栈开发工程师
+  url: https://github.com/lbytsl
+  image_url: https://github.com/lbytsl.png
   page: true
   socials:
-    github: your-github-username
-    linkedin: your-linkedin
-    newsletter: https://your-website.com
+    github: lbytsl

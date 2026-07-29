@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "prestart": "node scripts/build-stats.js",
     "start": "docusaurus start",
+    "start:en": "docusaurus start --locale en",
+    "prebuild": "node scripts/build-stats.js",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -33,6 +36,7 @@
     "@docusaurus/tsconfig": "3.10.2",
     "@docusaurus/types": "3.10.2",
     "@types/react": "^19.0.0",
+    "concurrently": "^9.2.4",
     "typescript": "~6.0.2"
   },
   "browserslist": {

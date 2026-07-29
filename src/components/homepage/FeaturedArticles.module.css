@@ -56,6 +56,18 @@
   background: linear-gradient(135deg, var(--ai-bg-secondary) 0%, var(--ai-accent-soft) 100%);
 }
 
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
 .cardImagePlaceholder {
   display: flex;
   align-items: center;

@@ -165,18 +165,16 @@ article h3 {
 /* ============================================================
  * Code Blocks
  * ============================================================ */
-code {
+/* Only style inline code; leave Docusaurus code blocks untouched.
+   Do NOT add any `pre` or `pre code` rules here — Docusaurus's own
+   CSS modules (codeBlockContainer / codeBlock / codeBlockLines) handle
+   all code-block styling. Overriding them breaks the official look. */
+:not(pre) > code {
   border-radius: 6px;
   font-size: 0.9em;
   padding: 0.15em 0.4em;
   background-color: var(--ai-bg-secondary);
   border: 1px solid var(--ai-border);
-}
-
-pre code {
-  border: none;
-  background-color: transparent;
-  padding: 0;
 }
 
 /* ============================================================

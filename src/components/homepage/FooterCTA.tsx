@@ -22,7 +22,7 @@ export default function FooterCTA(): React.ReactNode {
         </p>
         <div className={styles.links}>
           <a
-            href="https://github.com/your-github-username"
+            href="https://github.com/lbytsl"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
@@ -32,21 +32,13 @@ export default function FooterCTA(): React.ReactNode {
             </svg>
             GitHub
           </a>
-          <a href="mailto:your-email@example.com" className={styles.link}>
+          <a href="mailto:1012858748@qq.com" className={styles.link}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
             Email
           </a>
-          <Link to="/blog/rss.xml" className={styles.link}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M4 11a9 9 0 0 1 9 9" />
-              <path d="M4 4a16 16 0 0 1 16 16" />
-              <circle cx="5" cy="19" r="1" />
-            </svg>
-            RSS
-          </Link>
         </div>
       </div>
     </section>

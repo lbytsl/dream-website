@@ -7,33 +7,33 @@ const hotSkills = [
   {
     name: "PromptOps",
     description: "Prompt engineering workflow and version management, supporting A/B testing and evaluation.",
-    href: "/docs/skills/prompt-ops/index",
+    href: "/docs/skills/prompt-ops",
     hasGitHub: true,
   },
   {
     name: "Knowledge Base",
     description: "Build and manage enterprise knowledge bases with automated document parsing and chunking.",
-    href: "/docs/skills/knowledge-base/index",
+    href: "/docs/skills/knowledge-base",
   },
   {
     name: "RAG Pipeline",
     description: "End-to-end RAG pipeline: document ingestion, embedding, retrieval, and generation.",
-    href: "/docs/skills/rag/index",
+    href: "/docs/skills/rag",
   },
   {
     name: "Dify Plugin Dev",
     description: "Custom Dify plugins and tools development to extend platform capabilities.",
-    href: "/docs/skills/dify/index",
+    href: "/docs/skills/dify",
   },
   {
     name: "AI Code Review",
     description: "Automated code review with AI, covering security, performance, and best practices.",
-    href: "/docs/skills/coding/index",
+    href: "/docs/skills/coding",
   },
   {
     name: "PPT Automation",
     description: "AI-powered presentation generation from outlines to polished slides.",
-    href: "/docs/skills/ppt/index",
+    href: "/docs/skills/ppt",
   },
 ];
 

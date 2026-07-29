@@ -22,3 +22,8 @@ tutorial:
   label: Tutorial
   permalink: /tutorial
   description: AI 开发教程
+
+promptops:
+  label: PromptOps
+  permalink: /promptops
+  description: Prompt质量工程相关文章

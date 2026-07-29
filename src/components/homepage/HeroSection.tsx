@@ -3,6 +3,7 @@ import Link from "@docusaurus/Link";
 import { useColorMode } from "@docusaurus/theme-common";
 import Translate from "@docusaurus/Translate";
 import styles from "./HeroSection.module.css";
+import stats from "../../data/stats.json";
 
 export default function HeroSection(): React.ReactNode {
   const { colorMode } = useColorMode();
@@ -12,7 +13,7 @@ export default function HeroSection(): React.ReactNode {
       <div className={styles.heroInner}>
         <div className={styles.heroBadge}>
           <span className={styles.badgeDot} />
-          <Translate id="hero.badge">AI Developer Hub</Translate>
+          <Translate id="hero.badge">Dream</Translate>
         </div>
 
         <h1 className={styles.heroTitle}>
@@ -42,7 +43,7 @@ export default function HeroSection(): React.ReactNode {
           </Link>
           <Link
             className="button button--secondary button--lg"
-            href="https://github.com/your-github-username"
+            href="https://github.com/lbytsl"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -61,21 +62,21 @@ export default function HeroSection(): React.ReactNode {
 
         <div className={styles.heroStats}>
           <div className={styles.statItem}>
-            <span className={styles.statNumber}>50+</span>
+            <span className={styles.statNumber}>{stats.articles}+</span>
             <span className={styles.statLabel}>
               <Translate id="hero.stats.articles">技术文章</Translate>
             </span>
           </div>
           <div className={styles.statDivider} />
           <div className={styles.statItem}>
-            <span className={styles.statNumber}>100+</span>
+            <span className={styles.statNumber}>{stats.prompts}+</span>
             <span className={styles.statLabel}>
               <Translate id="hero.stats.prompts">Prompt 模板</Translate>
             </span>
           </div>
           <div className={styles.statDivider} />
           <div className={styles.statItem}>
-            <span className={styles.statNumber}>30+</span>
+            <span className={styles.statNumber}>{stats.skills}+</span>
             <span className={styles.statLabel}>
               <Translate id="hero.stats.skills">Skills 工具</Translate>
             </span>

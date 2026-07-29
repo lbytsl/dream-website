@@ -5,21 +5,21 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 const config: Config = {
-  title: "AI Developer Hub",
+  title: "Dream",
   tagline: "探索 AI 开发的前沿技术与实践",
-  favicon: "img/favicon.ico",
+  favicon: "img/avatar.jpg",
 
   future: {
     v4: true,
   },
 
-  url: "https://your-github-username.github.io",
+  url: "https://lbytsl.github.io",
   baseUrl: "/",
-  organizationName: "your-github-username",
+  organizationName: "lbytsl",
   projectName: "dream-website",
   trailingSlash: false,
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
 
 
   // ============================================================
@@ -27,17 +27,12 @@ const config: Config = {
   // ============================================================
   i18n: {
     defaultLocale: "zh-CN",
-    locales: ["zh-CN", "en"],
+    locales: ["zh-CN"],
     localeConfigs: {
       "zh-CN": {
         label: "中文",
         direction: "ltr",
         htmlLang: "zh-CN",
-      },
-      en: {
-        label: "English",
-        direction: "ltr",
-        htmlLang: "en-US",
       },
     },
   },
@@ -51,7 +46,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/your-github-username/dream-website/tree/main/",
+          editUrl: "https://github.com/lbytsl/dream-website/tree/main/",
           showLastUpdateTime: false,
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
@@ -63,11 +58,11 @@ const config: Config = {
           feedOptions: {
             type: ["rss", "atom"],
             xslt: true,
-            title: "AI Developer Hub Blog",
+            title: "Dream Blog",
             description: "AI 技术文章、Prompt 工程与开发实践",
-            copyright: `Copyright © ${new Date().getFullYear()} AI Developer Hub`,
+            copyright: `Copyright © ${new Date().getFullYear()} Dream`,
           },
-          editUrl: "https://github.com/your-github-username/dream-website/tree/main/",
+          editUrl: "https://github.com/lbytsl/dream-website/tree/main/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
@@ -107,10 +102,10 @@ const config: Config = {
   // ============================================================
   themeConfig: {
     // Replace with your project's social card
-    image: "img/social-card.png",
+    image: "img/logo.jpg",
     metadata: [
       { name: "keywords", content: "AI, Prompt, Skills, Dify, RAG, LLM, MCP, AI工程" },
-      { name: "author", content: "AI Developer Hub" },
+      { name: "author", content: "Dream" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     colorMode: {
@@ -131,10 +126,10 @@ const config: Config = {
     //   contextualSearch: true,
     // },
     navbar: {
-      title: "AI Developer Hub",
+      title: "Dream",
       logo: {
-        alt: "AI Developer Hub Logo",
-        src: "img/logo.svg",
+        alt: "Dream Logo",
+        src: "img/logo.jpg",
       },
       hideOnScroll: true,
       items: [
@@ -167,11 +162,7 @@ const config: Config = {
           position: "left",
         },
         {
-          type: "localeDropdown",
-          position: "right",
-        },
-        {
-          href: "https://github.com/your-github-username",
+          href: "https://github.com/lbytsl",
           position: "right",
           className: "header-github-link",
           "aria-label": "GitHub repository",
@@ -179,7 +170,6 @@ const config: Config = {
       ],
     },
     footer: {
-      style: "dark",
       links: [
         {
           title: "内容",
@@ -194,15 +184,11 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/your-github-username",
+              href: "https://github.com/lbytsl",
             },
             {
               label: "Email",
-              href: "mailto:your-email@example.com",
-            },
-            {
-              label: "RSS",
-              to: "/blog/rss.xml",
+              href: "mailto:1012858748@qq.com",
             },
           ],
         },
@@ -210,25 +196,15 @@ const config: Config = {
           title: "更多",
           items: [
             { label: "关于我", to: "/about" },
-            { label: "GitHub", href: "https://github.com/your-github-username" },
+            { label: "GitHub", href: "https://github.com/lbytsl" },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} AI Developer Hub. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Dream. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: [
-        "python",
-        "typescript",
-        "javascript",
-        "bash",
-        "json",
-        "yaml",
-        "markdown",
-        "sql",
-      ],
     },
     tableOfContents: {
       minHeadingLevel: 2,
