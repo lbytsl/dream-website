@@ -13,7 +13,7 @@ const config: Config = {
     v4: true,
   },
 
-  url: "https://lbytsl.github.io",
+  url: "https://dream.mindweave.top",
   baseUrl: "/",
   organizationName: "lbytsl",
   projectName: "dream-website",
@@ -46,7 +46,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/lbytsl/dream-website/tree/main/",
+          editUrl: "https://github.com/lbytsl/dream-website/tree/master/",
           showLastUpdateTime: false,
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
@@ -62,7 +62,7 @@ const config: Config = {
             description: "AI 技术文章、Prompt 工程与开发实践",
             copyright: `Copyright © ${new Date().getFullYear()} Dream`,
           },
-          editUrl: "https://github.com/lbytsl/dream-website/tree/main/",
+          editUrl: "https://github.com/lbytsl/dream-website/tree/master/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
