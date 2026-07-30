@@ -79,13 +79,21 @@
   margin-bottom: 0.75rem;
 }
 
-.cardGitHub {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.75rem;
-  color: var(--ai-text-muted);
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 0.25rem;
+}
+
+.cardTag {
+  font-size: 0.7rem;
   font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--ai-accent-soft);
+  color: var(--ifm-color-primary);
+  white-space: nowrap;
 }
 
 .cta {

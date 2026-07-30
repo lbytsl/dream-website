@@ -132,8 +132,8 @@ export default function About(): React.ReactNode {
             </p>
             <p className={styles.bio}>
               <Translate id="about.bio">
-                软件工程本科毕业，Java 全栈开发 3 年经验，具备从需求分析、系统设计到部署运维的全链路落地能力。
-                专注于 AI 工程化方向，擅长将大模型能力融入业务场景，构建具备 RAG 知识库、Tool Calling 和多模型协作能力的 AI 智能体系统。
+                热爱 AI 技术和开源，专注于 Prompt Engineering、RAG 系统和 AI 工程实践。
+                致力于通过技术文章和开源项目帮助更多开发者进入 AI 开发领域。
               </Translate>
             </p>
 
