@@ -69,10 +69,8 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "发现与自动化",
           link: {
-            type: "generated-index",
-            title: "发现与自动化",
-            description: "Skill 搜索与浏览器自动化工具",
-            slug: "/skills/discovery",
+            type: "doc",
+            id: "skills/discovery/index",
           },
           items: [
             "skills/discovery/find-skills/index",
@@ -83,10 +81,8 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "设计与前端",
           link: {
-            type: "generated-index",
-            title: "设计与前端",
-            description: "界面创作、设计审查与前端体验优化",
-            slug: "/skills/design",
+            type: "doc",
+            id: "skills/design/index",
           },
           items: [
             "skills/design/frontend-design/index",
@@ -97,10 +93,8 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "工程质量",
           link: {
-            type: "generated-index",
-            title: "工程质量",
-            description: "Prompt 工程、代码架构、React 性能与测试驱动开发",
-            slug: "/skills/engineering",
+            type: "doc",
+            id: "skills/engineering/index",
           },
           items: [
             "skills/engineering/react-best-practices/index",
@@ -125,10 +119,8 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "云与创意",
           link: {
-            type: "generated-index",
-            title: "云与创意",
-            description: "Azure AI、图像生成与程序化视频",
-            slug: "/skills/cloud-creative",
+            type: "doc",
+            id: "skills/cloud-creative/index",
           },
           items: [
             "skills/cloud/microsoft-foundry/index",

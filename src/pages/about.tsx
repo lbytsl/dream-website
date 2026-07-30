@@ -47,14 +47,16 @@ const openSourceProjects = [
   {
     name: "sql_to_ER",
     repo: "lbytsl/sql_to_ER",
-    description: "ER 图生成工具 — 支持 SQL 解析、批量导入、图形编辑与多种格式导出",
+    description:
+      "一个轻量级的 ER 图生成工具，支持直接粘贴 SQL DDL 语句自动解析为实体关系图。提供可视化画布编辑，支持批量表导入、字段编辑、连线关系调整，并可导出 PNG / SVG / PDF 等多种格式。适用于数据库设计评审、架构文档编写与团队协作。",
     href: "https://github.com/lbytsl/sql_to_ER",
     language: "Vue",
   },
   {
     name: "skills-promptops",
     repo: "lbytsl/skills-promptops",
-    description: "Prompt 质量工程工作流 — 设计、评估、改进、比较、测试与发布门禁",
+    description:
+      "开源 Prompt 质量工程标准 Skill，将 Prompt 从一次性文案升级为可审计、可测试、可比较、可发布的工程资产。提供质量审计（五维评估）、安全优化（逐项变更记录）、版本比较（回归检测）、测试发布（四类用例 + 门禁）以及结构化 Prompt 设计七大能力。纯 Markdown 无专有依赖，支持 Claude Code / Codex / Trae / WorkBuddy 等主流 AI Agent 平台。",
     href: "https://github.com/lbytsl/skills-promptops",
     language: "Markdown",
   },
@@ -169,74 +171,6 @@ export default function About(): React.ReactNode {
                   </ul>
                 </div>
               ))}
-            </div>
-          </section>
-
-          {/* Professional Experience */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>工作经历</h2>
-            <div className={styles.experienceList}>
-              <div className={styles.experienceItem}>
-                <div className={styles.experienceHeader}>
-                  <h3 className={styles.experienceRole}>AI 开发工程师</h3>
-                  <span className={styles.experienceDate}>2026.01 - 至今</span>
-                </div>
-                <p className={styles.experienceCompany}>某 AI 科技公司</p>
-                <p className={styles.experienceDesc}>
-                  负责 AI 全栈平台核心功能建设，参与多角色协作平台的全栈研发与架构落地。
-                  设计并落地多模型 LLM 接入能力，基于 LangChain / LangGraph 构建 AI 访谈分析工作流。
-                  建设 RAG 与知识库能力，负责实时智能辅助链路（WebSocket、SSE、语音转写 + 大模型）。
-                  负责单用户报告、多用户洞察简报和项目洞察台建设，支持 Word / PDF 导出。
-                  推动前端复杂模块工程化治理，抽象通用组件与 Hooks 降低维护成本。
-                </p>
-              </div>
-
-              <div className={styles.experienceItem}>
-                <div className={styles.experienceHeader}>
-                  <h3 className={styles.experienceRole}>全栈工程师（实习生 → 工程师）</h3>
-                  <span className={styles.experienceDate}>2024.07 - 2026.01</span>
-                </div>
-                <p className={styles.experienceCompany}>某文化传媒公司</p>
-                <p className={styles.experienceDesc}>
-                  管理技术部门开发运转，负责 Android / iOS 双端 APP、官网、微信小程序从 0 到 1 的设计与开发。
-                  独立完成官网的全栈开发与上线（Spring Boot + Vue 3），负责 ICP 备案、域名备案及云服务器部署。
-                  设计并实现后台管理系统，构建安全防护体系（密码加盐哈希、JWT 防伪造、DDoS 防护、文件上传校验）。
-                  实现完整的 RBAC 动态权限控制系统与数据权限分级管理，接入微信支付完成订单闭环。
-                  独立完成 SEO 优化与搜索引擎收录，通过 Meta 标签优化、页面性能优化等手段提升搜索可见度。
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Key Projects */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>重点项目</h2>
-            <div className={styles.experienceList}>
-              <div className={styles.experienceItem}>
-                <div className={styles.experienceHeader}>
-                  <h3 className={styles.experienceRole}>AI 多智能体平台</h3>
-                  <span className={styles.experienceDate}>2025.02 - 2025.07</span>
-                </div>
-                <p className={styles.experienceCompany}>毕业设计 · 广东省计算机设计大赛三等奖</p>
-                <p className={styles.experienceDesc}>
-                  独立设计开发企业级多智能体平台系统（Vue 3 + Spring Boot 3 + Spring AI + RAG + Tool Calling + MCP）。
-                  支持多轮对话、记忆持久化、RAG 知识库检索，基于 ReAct 模式实现自主规划智能体。
-                  实现 SQL ER 图生成、AI 思维导图实时渲染、SSE 流式接口消费者等模块。
-                  运用 Prompt 工程优化智能体输出质量，基于阿里云百炼平台反复测试迭代。
-                </p>
-              </div>
-
-              <div className={styles.experienceItem}>
-                <div className={styles.experienceHeader}>
-                  <h3 className={styles.experienceRole}>跨平台智能设备控制 APP</h3>
-                  <span className={styles.experienceDate}>2024.07 - 2025.01</span>
-                </div>
-                <p className={styles.experienceCompany}>Android / iOS 双端 · 已上线应用商店</p>
-                <p className={styles.experienceDesc}>
-                  基于 UniApp + Vue 3 开发双端 APP，设计全局蓝牙管理器控制设备动力组模块。
-                  实现遥控模式、陀螺仪模式、导航模式、编程模式，完成从 0 到 1 研发并上线应用商店。
-                </p>
-              </div>
             </div>
           </section>
 
