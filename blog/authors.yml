@@ -1,8 +1,13 @@
 lbytsl:
-  name: lbytsl
-  title: AI全栈开发工程师
+  name: Dream
+  title: AI 全栈开发工程师 · Prompt Engineering 实践者
   url: https://github.com/lbytsl
   image_url: https://github.com/lbytsl.png
   page: true
   socials:
     github: lbytsl
+  description: |
+    AI 全栈开发工程师，专注 LLM 应用开发、Prompt 工程与 RAG 系统建设。
+    主导 AI 多智能体平台（Spring AI + LangChain）、跨平台智能设备 APP 研发。
+    开源项目 skills-promptops（Prompt 质量工程标准）与 sql_to_ER（ER 图生成工具）作者。
+    深度使用 Cursor、Trae、Claude Code、Codex 等 AI 辅助开发工具，推动 AI 工程化最佳实践。

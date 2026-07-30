@@ -15,8 +15,8 @@ export default function Home(): React.ReactNode {
 
   return (
     <Layout
-      title={siteConfig.tagline}
-      description="AI Developer Hub - 探索 AI 开发的前沿技术与实践，分享 Prompt、Skills、开源项目与工程实践"
+      title="Dream — AI 开发前沿技术平台 | Prompt · Skills · RAG · MCP"
+      description="一站式 AI 开发技术博客，专注 Prompt 工程、RAG 知识库、Skills 工具集、MCP 协议与 LLM 实战。提供 20+ Prompt 模板、11+ Skills 工具，助你从入门到精通 ✓ 立即探索 AI 开发新范式 →"
     >
       <HeroSection />
       <main>

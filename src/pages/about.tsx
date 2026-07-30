@@ -11,8 +11,7 @@ const skillCategories = [
       { name: "Spring AI", desc: "会话记忆、RAG 知识库、Tool Calling、MCP 协议" },
       { name: "LangChain / LangGraph", desc: "AI 工作流编排、多模型接入、Agent 任务链路" },
       { name: "Prompt Engineering", desc: "角色定义、思维链、少样本学习、结构化输出" },
-      { name: "RAG 系统", desc: "知识库构建、向量检索、上下文增强、引用追溯" },
-      { name: "Claude Agent SDK", desc: "对话式交互、工具调用、检查点快照、版本回退" },
+      { name: "RAG 系统", desc: "知识库构建、向量检索、上下文增强、引用追溯" }
     ],
   },
   {
@@ -153,8 +152,8 @@ function StarDisplay({ repo }: { repo: string }) {
 export default function About(): React.ReactNode {
   return (
     <Layout
-      title="关于我"
-      description="关于 Dream - 全栈 AI 开发者，专注于 AI 工程化与 Prompt 质量工程"
+      title="关于我 — AI 全栈开发工程师 | Dream"
+      description="AI 全栈开发工程师 — 精通 Spring AI、LangChain/LangGraph、Prompt Engineering、RAG 知识库、MCP 协议。Java + Python 双栈，从后端到前端全覆盖 ✓ 欢迎技术交流与合作 →"
     >
       <main className={styles.page}>
         <div className={styles.container}>

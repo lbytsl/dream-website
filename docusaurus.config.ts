@@ -5,8 +5,8 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 const config: Config = {
-  title: "Dream",
-  tagline: "探索 AI 开发的前沿技术与实践",
+  title: "Dream — AI 开发前沿技术平台",
+  tagline: "一站式 AI 开发技术博客：Prompt 工程 · RAG · Skills · MCP · LLM 实战",
   favicon: "img/avatar.jpg",
 
   future: {
@@ -83,6 +83,95 @@ const config: Config = {
   ],
 
   // ============================================================
+  // headTags — 全局 <head> 标签注入 (hreflang, DNS prefetch 等)
+  // ============================================================
+  headTags: [
+    // hreflang: 中文页面
+    {
+      tagName: "link",
+      attributes: {
+        rel: "alternate",
+        hreflang: "zh-CN",
+        href: "https://dream.mindweave.top",
+      },
+    },
+    // hreflang: 默认回退
+    {
+      tagName: "link",
+      attributes: {
+        rel: "alternate",
+        hreflang: "x-default",
+        href: "https://dream.mindweave.top",
+      },
+    },
+    // DNS 预解析
+    {
+      tagName: "link",
+      attributes: {
+        rel: "dns-prefetch",
+        href: "https://cdn.jsdelivr.net",
+      },
+    },
+    // ============ JSON-LD 结构化数据 ============
+    // Organization
+    {
+      tagName: "script",
+      attributes: { type: "application/ld+json" },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dream",
+        "url": "https://dream.mindweave.top",
+        "logo": "https://dream.mindweave.top/img/logo.jpg",
+        "sameAs": ["https://github.com/lbytsl"],
+        "description": "AI 开发前沿技术平台，专注 Prompt 工程、RAG、Skills 工具集与 LLM 实战",
+      }),
+    },
+    // WebSite
+    {
+      tagName: "script",
+      attributes: { type: "application/ld+json" },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Dream - AI 开发技术平台",
+        "url": "https://dream.mindweave.top",
+        "description": "一站式 AI 开发技术博客：Prompt 工程 · RAG · Skills · MCP · LLM 实战",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://dream.mindweave.top/search?q={search_term_string}",
+          "query-input": "required name=search_term_string",
+        },
+      }),
+    },
+    // Person (Author)
+    {
+      tagName: "script",
+      attributes: { type: "application/ld+json" },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dream (lbytsl)",
+        "url": "https://dream.mindweave.top/about",
+        "jobTitle": "AI 全栈开发工程师",
+        "sameAs": [
+          "https://github.com/lbytsl",
+          "https://blog.csdn.net/weixin_68705666",
+        ],
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Prompt Engineering",
+          "RAG (Retrieval-Augmented Generation)",
+          "LangChain",
+          "Spring AI",
+          "MCP Protocol",
+          "LLM Application Development",
+        ],
+      }),
+    },
+  ],
+
+  // ============================================================
   // Plugins
   // ============================================================
   plugins: [],
@@ -101,12 +190,31 @@ const config: Config = {
   // Theme Config
   // ============================================================
   themeConfig: {
-    // Replace with your project's social card
-    image: "img/logo.jpg",
+    // 社交分享卡片图片 (1200×630px PNG 推荐)
+    image: "img/og-default.png",
     metadata: [
-      { name: "keywords", content: "AI, Prompt, Skills, Dify, RAG, LLM, MCP, AI工程" },
-      { name: "author", content: "Dream" },
+      // ============ 基础 SEO ============
+      { name: "keywords", content: "AI, Prompt, Skills, Dify, RAG, LLM, MCP, AI工程, PromptOps, LangChain, Spring AI, Agent, 智能体" },
+      { name: "author", content: "Dream (lbytsl)" },
+      { name: "robots", content: "index, follow" },
+
+      // ============ OpenGraph ============
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Dream - AI 开发技术平台" },
+      { property: "og:locale", content: "zh_CN" },
+      { property: "og:title", content: "Dream — AI 开发前沿技术平台 | Prompt · Skills · RAG · MCP" },
+      { property: "og:description", content: "一站式 AI 开发技术博客：涵盖 Prompt 工程、RAG 知识库、Skills 工具集、MCP 协议与 LLM 实战。20+ Prompt 模板，11+ Skills 工具 ✓" },
+      { property: "og:image", content: "https://dream.mindweave.top/img/og-default.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Dream - AI 开发前沿技术平台" },
+
+      // ============ Twitter Card ============
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Dream — AI 开发前沿技术平台 | Prompt · Skills · RAG · MCP" },
+      { name: "twitter:description", content: "一站式 AI 开发技术博客：涵盖 Prompt 工程、RAG 知识库、Skills 工具集、MCP 协议与 LLM 实战 ✓" },
+      { name: "twitter:image", content: "https://dream.mindweave.top/img/og-default.png" },
+      { name: "twitter:image:alt", content: "Dream - AI 开发前沿技术平台" },
     ],
     colorMode: {
       defaultMode: "dark",
