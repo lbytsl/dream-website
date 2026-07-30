@@ -103,7 +103,7 @@ const root = path.resolve(__dirname, "..");
 const stats = {
   articles: countDirs(path.join(root, "blog")),
   prompts: countFiles(path.join(root, "docs", "prompt"), ".mdx"),
-  skills: countFiles(path.join(root, "docs", "skills"), ".mdx"),
+  skills: countDirs(path.join(root, "docs", "skills")),
 };
 
 const recentPosts = parseBlogPosts(path.join(root, "blog"));
