@@ -3,8 +3,10 @@
 ## 项目基本信息
 - **项目名**：dream-website（AI Developer Hub）
 - **作者**：Dream（lbytsl），GitHub: https://github.com/lbytsl，Email: 1012858748@qq.com
-- **部署地址**：https://lbytsl.github.io（baseUrl: "/"，trailingSlash: false）
+- **部署地址**：https://dream.mindweave.top（自定义域名，baseUrl: "/"，trailingSlash: false）
 - **仓库**：https://github.com/lbytsl/dream-website
+- **自动部署**：GitHub Actions（`.github/workflows/deploy.yml`），push master → 构建 → 部署到 gh-pages 分支
+- **DNS**：CNAME `dream` → `lbytsl.github.io`
 
 ## 技术栈
 - Docusaurus 3.10.2（@docusaurus/core + preset-classic + faster + theme-mermaid）

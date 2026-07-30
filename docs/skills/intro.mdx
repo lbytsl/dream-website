@@ -21,12 +21,19 @@ Skills 是可复用的 AI 能力模块，每个 Skill 包含：
 
 ## 分类浏览
 
-- **[PromptOps](/docs/skills/prompt-ops)** - Prompt 工程化管理
-- **[Knowledge Base](/docs/skills/knowledge-base)** - 知识库构建与管理
-- **[RAG](/docs/skills/rag)** - 检索增强生成全流程
-- **[Dify](/docs/skills/dify)** - Dify 插件与工具开发
-- **[Coding](/docs/skills/coding)** - AI 辅助编程与审查
-- **[PPT](/docs/skills/ppt)** - AI 驱动的演示文稿生成
+- **[PromptOps](/docs/skills/prompt-ops)** — Prompt 工程化质量审计与可靠性工程
+
+## 什么是 PromptOps
+
+PromptOps 是一个开源标准 Skill，专为工程化可靠的 Prompt 而设计。它不是你常见的 Prompt 生成器，而是一套完整的 Prompt 质量工作流：
+
+- **质量审计** — 证据化评分，识别幻觉、冲突、漂移、注入等风险
+- **安全优化** — 保持原意，按风险优先级改进，产出逐项变更记录
+- **版本比较** — 同一基线对比，检测能力回退和兼容性破坏
+- **测试与发布** — 生成典型/边界/对抗/回归用例，执行发布门禁
+- **设计新 Prompt** — 从需求出发构建生产就绪的 Prompt 规格
+
+PromptOps 支持 Claude Code、Codex、Trae、WorkBuddy 等主流 AI Agent 平台。
 
 ## 贡献
 
