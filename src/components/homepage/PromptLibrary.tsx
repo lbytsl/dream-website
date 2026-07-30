@@ -69,9 +69,7 @@ export default function PromptLibrary(): React.ReactNode {
 
         <div className={styles.grid}>
           {hotPrompts.map((prompt, idx) => (
-            <div key={idx} className={styles.cardWrapper}>
-              <PromptCard prompt={prompt} />
-            </div>
+            <PromptCard key={idx} prompt={prompt} />
           ))}
         </div>
 
