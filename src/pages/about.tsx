@@ -3,17 +3,51 @@ import Layout from "@theme/Layout";
 import Translate from "@docusaurus/Translate";
 import styles from "./about.module.css";
 
-const techStack = [
-  "Python", "TypeScript", "React", "Next.js", "Node.js",
-  "LangChain", "LlamaIndex", "Dify", "RAGFlow",
-  "PostgreSQL", "Redis", "Chroma", "Docker",
+const skillCategories = [
+  {
+    title: "AI 工程化",
+    items: [
+      { name: "Spring AI", desc: "会话记忆、RAG 知识库、Tool Calling、MCP 协议" },
+      { name: "LangChain / LangGraph", desc: "AI 工作流编排、多模型接入、Agent 任务链路" },
+      { name: "Prompt Engineering", desc: "角色定义、思维链、少样本学习、结构化输出" },
+      { name: "RAG 系统", desc: "知识库构建、向量检索、上下文增强、引用追溯" },
+      { name: "Claude Agent SDK", desc: "对话式交互、工具调用、检查点快照、版本回退" },
+    ],
+  },
+  {
+    title: "后端技术",
+    items: [
+      { name: "Java + Spring Boot 3", desc: "企业级后端开发，Spring Cloud Alibaba 微服务架构" },
+      { name: "Python + FastAPI", desc: "高性能 RESTful API 及 AI 应用后端服务" },
+      { name: "MySQL + Redis", desc: "数据库设计、索引优化、缓存方案、消息队列" },
+      { name: "Docker + Linux", desc: "容器化部署、服务器运维与环境管理" },
+    ],
+  },
+  {
+    title: "前端技术",
+    items: [
+      { name: "Vue 3 生态", desc: "Pinia、Element Plus、Vite，单页应用与后台管理系统" },
+      { name: "React + TypeScript", desc: "组件化开发、Hooks、状态管理与类型安全" },
+      { name: "UniApp 多端开发", desc: "微信小程序、Android/iOS 双端 APP 开发与上线" },
+      { name: "Tailwind CSS", desc: "实用优先的 CSS 框架，高效构建现代化界面" },
+    ],
+  },
+  {
+    title: "工程能力",
+    items: [
+      { name: "RBAC 权限体系", desc: "动态权限、数据分级、SaaS 多租户架构" },
+      { name: "支付集成", desc: "微信支付、支付宝开放平台，回调验签与安全防护" },
+      { name: "实时通信", desc: "WebSocket、SSE 流式推送、Redis Streams 异步处理" },
+      { name: "AI 辅助开发", desc: "Cursor、Trae、Claude Code、Codex 等工具深度使用" },
+    ],
+  },
 ];
 
 const openSourceProjects = [
   {
     name: "sql_to_ER",
     repo: "lbytsl/sql_to_ER",
-    description: "ER 图生成工具",
+    description: "ER 图生成工具 — 支持 SQL 解析、批量导入、图形编辑与多种格式导出",
     href: "https://github.com/lbytsl/sql_to_ER",
     language: "Vue",
   },
@@ -26,16 +60,12 @@ const openSourceProjects = [
   },
 ];
 
-function TechIcon({ tech }: { tech: string }) {
-  return <span className={styles.techBadge}>{tech}</span>;
-}
-
 function useGitHubStars(repo: string) {
   const [stars, setStars] = useState<number | null>(null);
 
   useEffect(() => {
     const key = `gh-stars-${repo}`;
-    const ttl = 60 * 60 * 1000; // 1 小时
+    const ttl = 60 * 60 * 1000;
 
     const cached = localStorage.getItem(key);
     if (cached) {
@@ -86,25 +116,22 @@ export default function About(): React.ReactNode {
   return (
     <Layout
       title="关于我"
-      description="关于 Dream 的作者 - AI 开发者与技术写作者"
+      description="关于 Dream - 全栈 AI 开发者，专注于 AI 工程化与 Prompt 质量工程"
     >
       <main className={styles.page}>
         <div className={styles.container}>
           {/* Profile Header */}
           <section className={styles.profile}>
-            <div className={styles.avatar}>
-              <img src="/img/avatar.jpg" alt="Dream" className={styles.avatarImage} />
-            </div>
             <h1 className={styles.name}>
               <Translate id="about.name">Dream</Translate>
             </h1>
             <p className={styles.title}>
-              <Translate id="about.tagline">AI全栈开发工程师</Translate>
+              <Translate id="about.tagline">全栈 AI 开发工程师</Translate>
             </p>
             <p className={styles.bio}>
               <Translate id="about.bio">
-                热爱 AI 技术和开源，专注于 Prompt Engineering、RAG 系统和 AI 工程实践。
-                致力于通过技术文章和开源项目帮助更多开发者进入 AI 开发领域。
+                软件工程本科毕业，Java 全栈开发 3 年经验，具备从需求分析、系统设计到部署运维的全链路落地能力。
+                专注于 AI 工程化方向，擅长将大模型能力融入业务场景，构建具备 RAG 知识库、Tool Calling 和多模型协作能力的 AI 智能体系统。
               </Translate>
             </p>
 
@@ -115,33 +142,107 @@ export default function About(): React.ReactNode {
                 </svg>
                 GitHub
               </a>
-              <a href="mailto:1012858748@qq.com" className={styles.socialLink}>
+              <a href="https://blog.csdn.net/weixin_68705666" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                 </svg>
-                Email
+                CSDN Blog
               </a>
             </div>
           </section>
 
-          {/* Tech Stack */}
+          {/* Core Competencies */}
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>
-              <Translate id="about.techStack.title">技术栈</Translate>
-            </h2>
-            <div className={styles.techGrid}>
-              {techStack.map((tech) => (
-                <TechIcon key={tech} tech={tech} />
+            <h2 className={styles.sectionTitle}>核心能力</h2>
+            <div className={styles.skillGrid}>
+              {skillCategories.map((category) => (
+                <div key={category.title} className={styles.skillCategory}>
+                  <h3 className={styles.skillCategoryTitle}>{category.title}</h3>
+                  <ul className={styles.skillList}>
+                    {category.items.map((item) => (
+                      <li key={item.name} className={styles.skillItem}>
+                        <span className={styles.skillName}>{item.name}</span>
+                        <span className={styles.skillDesc}>{item.desc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
+            </div>
+          </section>
+
+          {/* Professional Experience */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>工作经历</h2>
+            <div className={styles.experienceList}>
+              <div className={styles.experienceItem}>
+                <div className={styles.experienceHeader}>
+                  <h3 className={styles.experienceRole}>AI 开发工程师</h3>
+                  <span className={styles.experienceDate}>2026.01 - 至今</span>
+                </div>
+                <p className={styles.experienceCompany}>某 AI 科技公司</p>
+                <p className={styles.experienceDesc}>
+                  负责 AI 全栈平台核心功能建设，参与多角色协作平台的全栈研发与架构落地。
+                  设计并落地多模型 LLM 接入能力，基于 LangChain / LangGraph 构建 AI 访谈分析工作流。
+                  建设 RAG 与知识库能力，负责实时智能辅助链路（WebSocket、SSE、语音转写 + 大模型）。
+                  负责单用户报告、多用户洞察简报和项目洞察台建设，支持 Word / PDF 导出。
+                  推动前端复杂模块工程化治理，抽象通用组件与 Hooks 降低维护成本。
+                </p>
+              </div>
+
+              <div className={styles.experienceItem}>
+                <div className={styles.experienceHeader}>
+                  <h3 className={styles.experienceRole}>全栈工程师（实习生 → 工程师）</h3>
+                  <span className={styles.experienceDate}>2024.07 - 2026.01</span>
+                </div>
+                <p className={styles.experienceCompany}>某文化传媒公司</p>
+                <p className={styles.experienceDesc}>
+                  管理技术部门开发运转，负责 Android / iOS 双端 APP、官网、微信小程序从 0 到 1 的设计与开发。
+                  独立完成官网的全栈开发与上线（Spring Boot + Vue 3），负责 ICP 备案、域名备案及云服务器部署。
+                  设计并实现后台管理系统，构建安全防护体系（密码加盐哈希、JWT 防伪造、DDoS 防护、文件上传校验）。
+                  实现完整的 RBAC 动态权限控制系统与数据权限分级管理，接入微信支付完成订单闭环。
+                  独立完成 SEO 优化与搜索引擎收录，通过 Meta 标签优化、页面性能优化等手段提升搜索可见度。
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Key Projects */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>重点项目</h2>
+            <div className={styles.experienceList}>
+              <div className={styles.experienceItem}>
+                <div className={styles.experienceHeader}>
+                  <h3 className={styles.experienceRole}>AI 多智能体平台</h3>
+                  <span className={styles.experienceDate}>2025.02 - 2025.07</span>
+                </div>
+                <p className={styles.experienceCompany}>毕业设计 · 广东省计算机设计大赛三等奖</p>
+                <p className={styles.experienceDesc}>
+                  独立设计开发企业级多智能体平台系统（Vue 3 + Spring Boot 3 + Spring AI + RAG + Tool Calling + MCP）。
+                  支持多轮对话、记忆持久化、RAG 知识库检索，基于 ReAct 模式实现自主规划智能体。
+                  实现 SQL ER 图生成、AI 思维导图实时渲染、SSE 流式接口消费者等模块。
+                  运用 Prompt 工程优化智能体输出质量，基于阿里云百炼平台反复测试迭代。
+                </p>
+              </div>
+
+              <div className={styles.experienceItem}>
+                <div className={styles.experienceHeader}>
+                  <h3 className={styles.experienceRole}>跨平台智能设备控制 APP</h3>
+                  <span className={styles.experienceDate}>2024.07 - 2025.01</span>
+                </div>
+                <p className={styles.experienceCompany}>Android / iOS 双端 · 已上线应用商店</p>
+                <p className={styles.experienceDesc}>
+                  基于 UniApp + Vue 3 开发双端 APP，设计全局蓝牙管理器控制设备动力组模块。
+                  实现遥控模式、陀螺仪模式、导航模式、编程模式，完成从 0 到 1 研发并上线应用商店。
+                </p>
+              </div>
             </div>
           </section>
 
           {/* Open Source */}
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>
-              <Translate id="about.oss.title">开源项目</Translate>
-            </h2>
+            <h2 className={styles.sectionTitle}>开源项目</h2>
             <div className={styles.projectGrid}>
               {openSourceProjects.map((proj) => (
                 <a
@@ -169,13 +270,9 @@ export default function About(): React.ReactNode {
 
           {/* Contact */}
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>
-              <Translate id="about.contact.title">联系方式</Translate>
-            </h2>
+            <h2 className={styles.sectionTitle}>联系方式</h2>
             <p className={styles.contactText}>
-              <Translate id="about.contact.desc">
-                如果你对 AI 开发有兴趣，或者有合作想法，欢迎通过 GitHub 或 Email 联系我。
-              </Translate>
+              如果你对 AI 开发有兴趣，或想交流 Prompt 工程与 Agent 开发经验，欢迎通过 GitHub 联系我。
             </p>
             <div className={styles.contactLinks}>
               <a href="https://github.com/lbytsl" target="_blank" rel="noopener noreferrer" className="button button--primary button--lg">

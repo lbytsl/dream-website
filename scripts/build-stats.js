@@ -15,6 +15,48 @@ function countFiles(dir, ext) {
   return count;
 }
 
+// Prompt 目录还包含总入口和分类入口，它们不是独立提示词。
+// 真正的提示词采用 docs/prompt/{分类}/{提示词}/index.mdx 结构。
+function countPromptEntries(dir) {
+  if (!fs.existsSync(dir)) return 0;
+  let count = 0;
+
+  function walk(currentDir) {
+    for (const entry of fs.readdirSync(currentDir, { withFileTypes: true })) {
+      const fullPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        walk(fullPath);
+      } else if (entry.isFile() && entry.name === "index.mdx") {
+        const relativeParts = path.relative(dir, fullPath).split(path.sep);
+        if (relativeParts.length >= 3) count++;
+      }
+    }
+  }
+
+  walk(dir);
+  return count;
+}
+
+function countSkillEntries(dir) {
+  if (!fs.existsSync(dir)) return 0;
+  let count = 0;
+
+  function walk(currentDir) {
+    for (const entry of fs.readdirSync(currentDir, { withFileTypes: true })) {
+      const fullPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        walk(fullPath);
+      } else if (entry.isFile() && entry.name.endsWith(".mdx")) {
+        const frontmatter = parseFrontmatter(fs.readFileSync(fullPath, "utf-8"));
+        if (frontmatter.skill === "true") count++;
+      }
+    }
+  }
+
+  walk(dir);
+  return count;
+}
+
 function countDirs(dir) {
   if (!fs.existsSync(dir)) return 0;
   return fs
@@ -102,8 +144,8 @@ const root = path.resolve(__dirname, "..");
 
 const stats = {
   articles: countDirs(path.join(root, "blog")),
-  prompts: countFiles(path.join(root, "docs", "prompt"), ".mdx"),
-  skills: countDirs(path.join(root, "docs", "skills")),
+  prompts: countPromptEntries(path.join(root, "docs", "prompt")),
+  skills: countSkillEntries(path.join(root, "docs", "skills")),
 };
 
 const recentPosts = parseBlogPosts(path.join(root, "blog"));

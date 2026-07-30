@@ -7,27 +7,27 @@ const hotSkills = [
   {
     name: "质量审计",
     description: "证据化评分，识别幻觉、冲突、漂移、注入等风险。覆盖规格、依据、控制、适配、验证五个维度。",
-    href: "/docs/skills/prompt-ops/quality-audit",
+    href: "/docs/skills/engineering/prompt-ops/quality-audit",
   },
   {
     name: "安全优化",
     description: "保持任务意图和接口不变，按风险优先级优化，产出逐项变更记录和预期影响说明。",
-    href: "/docs/skills/prompt-ops/optimization",
+    href: "/docs/skills/engineering/prompt-ops/optimization",
   },
   {
     name: "版本比较",
     description: "同一基线对比多个版本，检测能力回退、兼容性破坏和新阻塞项，给出明确迁移建议。",
-    href: "/docs/skills/prompt-ops/comparison",
+    href: "/docs/skills/engineering/prompt-ops/comparison",
   },
   {
     name: "测试与发布",
     description: "生成典型、边界、对抗、回归四类用例，定义断言，执行发布门禁检查。",
-    href: "/docs/skills/prompt-ops/testing",
+    href: "/docs/skills/engineering/prompt-ops/testing",
   },
   {
     name: "Prompt 设计",
     description: "从需求出发，七步构建法产出角色、目标、约束、输出契约和验收标准。",
-    href: "/docs/skills/prompt-ops/design",
+    href: "/docs/skills/engineering/prompt-ops/design",
   },
   {
     name: "开源仓库",

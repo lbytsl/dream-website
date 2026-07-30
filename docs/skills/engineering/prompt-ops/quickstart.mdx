@@ -1,0 +1,134 @@
+---
+sidebar_position: 2
+title: 快速开始
+description: PromptOps 的安装配置与基本使用方法
+---
+
+# 快速开始
+
+本文介绍如何安装 PromptOps 并使用其核心能力。
+
+## 安装
+
+### 作为 AI Skill 安装
+
+克隆仓库到本地：
+
+```bash
+git clone https://github.com/lbytsl/skills-promptops.git
+```
+
+然后将 `promptops` 目录安装或链接到目标 AI Agent 的 Skills 目录。不同 Agent 的目录位置和发现机制不同：
+
+### 平台接入方式
+
+| 平台 | 推荐接入方式 |
+|------|-------------|
+| **Claude Code** | 将仓库作为项目级或用户级 Skill/指令资源，确保相对 references 可读 |
+| **OpenAI Codex** | 将目录安装为 `promptops` Skill；可选读取 `agents/openai.yaml` |
+| **Trae** | 将 `SKILL.md` 作为自定义规则、项目指令或 Skill 导入 |
+| **WorkBuddy** | 将目录添加为 Skill，或把 `SKILL.md` 与 references 作为 Agent 上下文 |
+| **其他 AI Agent** | 自动发现 `SKILL.md`，或通过 system/project instructions 显式加载 |
+
+:::info 跨平台兼容
+PromptOps 承诺**内容层兼容**：纯 Markdown、相对路径、无专有工具依赖。核心能力不依赖 Codex、Claude、OpenAI API 或任何专有运行时。
+:::
+
+### 不安装，直接复用方法论
+
+你可以不安装整个项目，直接从以下文件开始：
+
+- [质量评分规范](https://github.com/lbytsl/skills-promptops/blob/main/references/rubric.md) — 评分锚点和可靠性门禁
+- [测试方法](https://github.com/lbytsl/skills-promptops/blob/main/references/testing.md) — 测试设计与发布决策
+- [结构化数据集](https://github.com/lbytsl/skills-promptops/blob/main/benchmark/dataset.jsonl) — 可复现评测 fixtures
+
+将这些内容作为 prompt 集成到你现有的 Agent 工作流中即可。
+
+## 基本使用
+
+安装后直接向 Agent 提出任务，无需填写模板：
+
+### 评估 Prompt 质量
+
+```text
+使用 PromptOps 审查这段 RAG system prompt，重点检查无检索结果时的幻觉风险。
+```
+
+Agent 会输出：
+- 评分和置信度
+- 证据化评分明细
+- 阻塞风险列表
+- 优先修复建议及预期影响
+
+### 优化并生成测试
+
+```text
+使用 PromptOps 优化这段客服 prompt，保持原意不变，生成 5 个测试用例，
+并告诉我是否可以发布。
+```
+
+Agent 会输出：
+- 保持原意的优化版 Prompt
+- 逐项变更记录（每项对应其解决的风险）
+- 测试用例（典型 + 边界 + 对抗）
+- 发布决策及理由
+
+### 比较两个版本
+
+```text
+使用 PromptOps 比较旧版和新版 RAG prompt，检测是否有能力回退或兼容性破坏。
+```
+
+Agent 会输出：
+- 同一基线下的评分对比
+- 能力增量与损失分析
+- 兼容性和回归检测结果
+- 迁移建议：建议使用 baseline / candidate / merge / blocked
+
+## 路由机制
+
+PromptOps 会根据你的输入自动判断意图，无需手动指定模式：
+
+| 意图 | 触发信号 | Agent 行为 |
+|------|---------|-----------|
+| **design** | 有目标但无可用 Prompt | 澄清要点 → 产出 Prompt 规格 |
+| **evaluate** | 提供 Prompt，要求评分/审查/风险分析 | 证据化评分 + 诊断 |
+| **improve** | 提供 Prompt，要求修复/改写/加固 | 评估 → 修订 → 报告变更 |
+| **compare** | 提供两个或多个版本 | 同一基线比较 + 回归检测 |
+| **test** | 要求生成用例/验证/回归/发布就绪 | 构建测试套件 + 发布门禁 |
+
+## 项目文件结构
+
+```
+skills-promptops/
+├── SKILL.md              # 核心 Skill 定义，包含完整工作流
+├── README.md             # 项目说明（英文）
+├── README.zh-CN.md       # 项目说明（中文）
+├── references/           # 详细规范（按需加载）
+│   ├── rubric.md         # 评分锚点和可靠性门禁
+│   ├── testing.md        # 测试设计与发布决策
+│   ├── compare.md        # 版本比较方法论
+│   ├── schema.md         # 结构化输出集成规范
+│   └── interview.md      # 需求澄清模式
+├── examples/             # 示例案例（教学用途）
+│   ├── rag-agent.md
+│   ├── coding-agent.md
+│   ├── customer-service.md
+│   └── legal-contract.md
+├── benchmark/            # 评测数据集
+│   ├── dataset.jsonl     # 结构化评测 fixtures
+│   └── README.md         # 评测协议
+└── docs/                 # 项目文档
+    ├── roadmap.md
+    ├── integrations.md
+    └── examples.md
+```
+
+:::tip
+核心 Skill 文件 `SKILL.md` 约 150 行，详细规则从 `references/` 目录按需加载（仅在对应任务触发时），不占用常驻上下文。
+:::
+
+## 下一步
+
+- **[质量审计](/docs/skills/engineering/prompt-ops/quality-audit)** — 深入了解评估体系与评分方法
+- **[安全优化](/docs/skills/engineering/prompt-ops/optimization)** — 学习如何在不改变意图的前提下改进 Prompt

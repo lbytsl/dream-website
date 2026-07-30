@@ -5,46 +5,46 @@ import styles from "./PromptLibrary.module.css";
 
 const hotPrompts = [
   {
-    name: "System Prompt - Expert Developer",
-    model: "Claude • GPT-4",
-    category: "Coding",
-    description: "Expert software developer system prompt with deep reasoning and best practice guidance.",
-    href: "/docs/prompt/codex-cursor/generation",
+    name: "简约手绘知识信息图",
+    model: "AI 绘图",
+    category: "绘图",
+    description: "适合课程笔记、公众号配图和知识科普的手绘信息图模板。",
+    href: "/docs/prompt/painting/minimal-doodle-infographic",
   },
   {
-    name: "Long-form Content Writer",
-    model: "Claude 3.5",
-    category: "Writing",
-    description: "Professional content writing prompt supporting structured long-form output.",
-    href: "/docs/prompt/claude/long-form",
+    name: "物品爆炸视图",
+    model: "AI 绘图",
+    category: "产品设计",
+    description: "生成适合硬件原理和工业设计说明的专业爆炸视图。",
+    href: "/docs/prompt/painting/exploded-view",
   },
   {
-    name: "Data Analysis Assistant",
-    model: "GPT-4 • Gemini",
-    category: "Data Analysis",
-    description: "Automated data analysis and visualization prompt with statistical capabilities.",
-    href: "/docs/prompt/chatgpt/data-analysis",
+    name: "动漫人物角色设定图",
+    model: "AI 绘图",
+    category: "角色设计",
+    description: "生成包含三视图、表情、动作和服装变化的完整角色设定。",
+    href: "/docs/prompt/painting/anime-character-sheet",
   },
   {
-    name: "Dify Workflow Builder",
-    model: "Dify",
-    category: "Workflow",
-    description: "Efficient Dify workflow design prompt for complex business logic.",
-    href: "/docs/prompt/dify/workflow",
+    name: "智能旅行路线定制",
+    model: "通用大模型",
+    category: "旅行",
+    description: "根据预算、时间与偏好生成可执行的深度旅行方案。",
+    href: "/docs/prompt/text/travel-itinerary",
   },
   {
-    name: "RAG Knowledge Base QA",
-    model: "RAGFlow",
-    category: "RAG",
-    description: "Knowledge base question-answering prompt optimized for retrieval-augmented generation.",
-    href: "/docs/prompt/ragflow/query",
+    name: "30 天技能学习计划",
+    model: "通用大模型",
+    category: "学习",
+    description: "把学习目标拆解为每天可执行、可验收的渐进计划。",
+    href: "/docs/prompt/text/thirty-day-learning-plan",
   },
   {
-    name: "Code Review Expert",
-    model: "Claude • Cursor",
-    category: "Code Review",
-    description: "Professional code review prompt covering security, performance, and style.",
-    href: "/docs/prompt/claude/code-review",
+    name: "结构化知识讲解",
+    model: "通用大模型",
+    category: "知识讲解",
+    description: "用定义、类比、示例、流程图和自测题讲清复杂概念。",
+    href: "/docs/prompt/text/structured-explanation",
   },
 ];
 
@@ -74,7 +74,7 @@ export default function PromptLibrary(): React.ReactNode {
         </h2>
         <p className={styles.sectionSubtitle}>
           <Translate id="home.promptLibrary.subtitle">
-            精选高质量 Prompt 模板，覆盖主流模型与应用场景
+            精选实用 Prompt 模板，覆盖绘图、学习、工作与生活场景
           </Translate>
         </p>
 
