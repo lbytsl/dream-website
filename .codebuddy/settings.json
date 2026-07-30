@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "seo-content-creation@codebuddy-plugins-official": true,
+    "seo-technical-optimization@codebuddy-plugins-official": true
+  }
+}

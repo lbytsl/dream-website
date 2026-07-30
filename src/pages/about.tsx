@@ -5,8 +5,8 @@ import styles from "./about.module.css";
 
 const skillCategories = [
   {
+    category: "ai",
     title: "AI 工程化",
-    icon: "ai",
     items: [
       { name: "Spring AI", desc: "会话记忆、RAG 知识库、Tool Calling、MCP 协议" },
       { name: "LangChain / LangGraph", desc: "AI 工作流编排、多模型接入、Agent 任务链路" },
@@ -16,8 +16,8 @@ const skillCategories = [
     ],
   },
   {
+    category: "backend",
     title: "后端技术",
-    icon: "server",
     items: [
       { name: "Java + Spring Boot 3", desc: "企业级后端开发，Spring Cloud Alibaba 微服务架构" },
       { name: "Python + FastAPI", desc: "高性能 RESTful API 及 AI 应用后端服务" },
@@ -26,8 +26,8 @@ const skillCategories = [
     ],
   },
   {
+    category: "frontend",
     title: "前端技术",
-    icon: "layout",
     items: [
       { name: "Vue 3 生态", desc: "Pinia、Element Plus、Vite，单页应用与后台管理系统" },
       { name: "React + TypeScript", desc: "组件化开发、Hooks、状态管理与类型安全" },
@@ -36,8 +36,8 @@ const skillCategories = [
     ],
   },
   {
+    category: "engineering",
     title: "工程能力",
-    icon: "shield",
     items: [
       { name: "RBAC 权限体系", desc: "动态权限、数据分级、SaaS 多租户架构" },
       { name: "支付集成", desc: "微信支付、支付宝开放平台，回调验签与安全防护" },
@@ -47,44 +47,37 @@ const skillCategories = [
   },
 ];
 
-function SkillIcon({ type }: { type: string }) {
-  if (type === "ai") {
-    return (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="4" y="4" width="16" height="16" rx="2" />
-        <rect x="9" y="9" width="6" height="6" />
-        <line x1="9" y1="2" x2="9" y2="4" /><line x1="15" y1="2" x2="15" y2="4" />
-        <line x1="9" y1="20" x2="9" y2="22" /><line x1="15" y1="20" x2="15" y2="22" />
-        <line x1="20" y1="9" x2="22" y2="9" /><line x1="20" y1="14" x2="22" y2="14" />
-        <line x1="2" y1="9" x2="4" y2="9" /><line x1="2" y1="14" x2="4" y2="14" />
-      </svg>
-    );
-  }
-  if (type === "server") {
-    return (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="2" y="3" width="20" height="8" rx="2" />
-        <rect x="2" y="13" width="20" height="8" rx="2" />
-        <line x1="6" y1="7" x2="6.01" y2="7" /><line x1="6" y1="17" x2="6.01" y2="17" />
-      </svg>
-    );
-  }
-  if (type === "layout") {
-    return (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <line x1="3" y1="9" x2="21" y2="9" />
-        <line x1="9" y1="21" x2="9" y2="9" />
-      </svg>
-    );
-  }
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+const skillIcons: Record<string, React.ReactNode> = {
+  ai: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="4" width="16" height="16" rx="2" />
+      <circle cx="12" cy="12" r="3" />
+      <line x1="12" y1="2" x2="12" y2="4" /><line x1="12" y1="20" x2="12" y2="22" />
+      <line x1="20" y1="12" x2="22" y2="12" /><line x1="2" y1="12" x2="4" y2="12" />
+    </svg>
+  ),
+  backend: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="20" height="8" rx="2" />
+      <rect x="2" y="13" width="20" height="8" rx="2" />
+      <circle cx="6" cy="7" r="1" fill="currentColor" stroke="none" />
+      <circle cx="6" cy="17" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  frontend: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="8" height="18" rx="1" />
+      <rect x="14" y="3" width="8" height="14" rx="1" />
+      <line x1="6" y1="9" x2="6" y2="9.01" />
+    </svg>
+  ),
+  engineering: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       <polyline points="9 12 11 14 15 10" />
     </svg>
-  );
-}
+  ),
+};
 
 const openSourceProjects = [
   {
@@ -192,7 +185,7 @@ export default function About(): React.ReactNode {
                   <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                 </svg>
-                CSDN Blog
+                CSDN
               </a>
             </div>
           </section>
@@ -201,16 +194,17 @@ export default function About(): React.ReactNode {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>核心能力</h2>
             <div className={styles.skillGrid}>
-              {skillCategories.map((category) => (
-                <div key={category.title} className={styles.skillCategory}>
+              {skillCategories.map((cat) => (
+                <div key={cat.category} className={styles.skillCategory} data-category={cat.category}>
+                  <div className={styles.skillAccent} />
                   <div className={styles.skillCategoryHeader}>
                     <span className={styles.skillCategoryIcon}>
-                      <SkillIcon type={category.icon} />
+                      {skillIcons[cat.category]}
                     </span>
-                    <h3 className={styles.skillCategoryTitle}>{category.title}</h3>
+                    <h3 className={styles.skillCategoryTitle}>{cat.title}</h3>
                   </div>
                   <ul className={styles.skillList}>
-                    {category.items.map((item) => (
+                    {cat.items.map((item) => (
                       <li key={item.name} className={styles.skillItem}>
                         <span className={styles.skillName}>{item.name}</span>
                         <span className={styles.skillDesc}>{item.desc}</span>
