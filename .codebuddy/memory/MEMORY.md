@@ -17,7 +17,8 @@
 
 ## 目录与内容结构
 - `docs/prompt/`：19 篇 MDX，6 分类（ChatGPT/Claude/Gemini/Codex-Cursor/Dify/RAGFlow），侧边栏 ID = promptSidebar
-- `docs/skills/`：19 篇 MDX，6 分类（PromptOps/Knowledge-Base/RAG/Dify/Coding/PPT），侧边栏 ID = skillsSidebar
+- `docs/skills/`：8 篇 MDX（1 篇 intro + 7 篇 prompt-ops 教程），侧边栏 ID = skillsSidebar。基于 skills-promptops 开源项目内容重写
+- `docs/skills/prompt-ops/`：7 篇教程（概览、快速开始、质量审计、安全优化、版本比较、测试与发布、设计新 Prompt）
 - `blog/`：一篇文章一个目录（index.md + 封面图），frontmatter 引用 authors.yml/tags.yml
 - `src/components/homepage/`：5 个首页组件（HeroSection/FeaturedArticles/PromptLibrary/SkillsLibrary/FooterCTA）
 - `src/data/`：stats.json + recent-posts.json（由 scripts/build-stats.js 在 prestart/prebuild 自动生成）

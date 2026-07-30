@@ -78,7 +78,7 @@ export default function HeroSection(): React.ReactNode {
           <div className={styles.statItem}>
             <span className={styles.statNumber}>{stats.skills}+</span>
             <span className={styles.statLabel}>
-              <Translate id="hero.stats.skills">Skills 工具</Translate>
+              <Translate id="hero.stats.skills">实践教程</Translate>
             </span>
           </div>
         </div>
