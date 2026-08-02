@@ -8,7 +8,7 @@
       "promptops",
       "rag"
     ],
-    "description": "介绍 PromptOps 的核心能力——Prompt 质量审计、可靠性工程、安全优化、版本比较和测试",
+    "description": "深度解析 PromptOps 五大核心能力——质量审计、可靠性工程、安全优化、版本比较与测试发布。将 Prompt 从一次性文本升级为可评估、可测试、可发布的工程资产 ✓",
     "cover": "/img/blog-covers/PromptOps-cover.png"
   }
 ]

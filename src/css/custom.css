@@ -72,20 +72,23 @@ html {
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
+  overflow-x: clip;
 }
 
 /* ============================================================
  * Navbar
  * ============================================================ */
 .navbar {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid var(--ai-border);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  background-color: rgba(255, 255, 255, 0.76);
+  border-bottom: 1px solid color-mix(in srgb, var(--ai-border) 76%, transparent);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, .035);
+  will-change: transform;
 }
 
 [data-theme="dark"] .navbar {
-  background-color: rgba(15, 23, 42, 0.8);
+  background-color: rgba(8, 10, 18, 0.72);
 }
 
 .navbar__title {
@@ -155,11 +158,13 @@ article h2 {
   margin-top: 2.5rem;
   padding-bottom: 0.3rem;
   border-bottom: 2px solid var(--ai-border);
+  scroll-margin-top: 6rem;
 }
 
 article h3 {
   font-size: 1.25rem;
   margin-top: 2rem;
+  scroll-margin-top: 6rem;
 }
 
 /* ============================================================
@@ -175,6 +180,29 @@ article h3 {
   padding: 0.15em 0.4em;
   background-color: var(--ai-bg-secondary);
   border: 1px solid var(--ai-border);
+}
+
+article [class*="codeBlockContainer"] {
+  border: 1px solid color-mix(in srgb, var(--ai-border) 78%, var(--ifm-color-primary) 22%);
+  box-shadow: 0 12px 34px rgba(15, 23, 42, .08);
+  transform-origin: center;
+  will-change: transform;
+}
+
+[data-theme="dark"] article [class*="codeBlockContainer"] {
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .24), 0 0 0 1px rgba(129, 140, 248, .035);
+}
+
+article blockquote {
+  border-left-color: var(--ifm-color-primary);
+  background: linear-gradient(90deg, var(--ai-accent-soft), transparent);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 3px;
 }
 
 /* ============================================================
@@ -248,6 +276,8 @@ article h3 {
  * Responsive
  * ============================================================ */
 @media (max-width: 996px) {
+  .navbar { will-change: auto; }
+  article [class*="codeBlockContainer"] { will-change: auto; }
   .ai-section {
     padding: 3rem 0;
   }

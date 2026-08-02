@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useMemo, useRef, useState } from "react";
 import Link from "@docusaurus/Link";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import styles from "./SkillCategoryGrid.module.css";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP);
+}
 
 type CategoryType = "discovery" | "design" | "engineering" | "cloudCreative";
 
@@ -41,13 +47,80 @@ const categoryMeta = {
   cloudCreative: { eyebrow: "CLOUD & CREATIVE", title: "云与创意", description: "连接云端 AI 服务、图像生成与程序化视频生产工作流。" },
 };
 
+const categoryLinks: Array<{ type: CategoryType; label: string; href: string }> = [
+  { type: "discovery", label: "发现", href: "/docs/skills/discovery" },
+  { type: "design", label: "设计", href: "/docs/skills/design" },
+  { type: "engineering", label: "工程", href: "/docs/skills/engineering" },
+  { type: "cloudCreative", label: "云与创意", href: "/docs/skills/cloud-creative" },
+];
+
 export default function SkillCategoryGrid({ type }: { type: CategoryType }) {
   const items = skillData[type];
   const meta = categoryMeta[type];
+  const root = useRef<HTMLDivElement>(null);
+  const [query, setQuery] = useState("");
+  const filteredItems = useMemo(() => {
+    const keyword = query.trim().toLowerCase();
+    if (!keyword) return items;
+    return items.filter((item) =>
+      [item.title, item.description, ...item.tags].join(" ").toLowerCase().includes(keyword),
+    );
+  }, [items, query]);
+
+  useGSAP(
+    (context) => {
+      const mm = gsap.matchMedia();
+      mm.add(
+        {
+          motion: "(prefers-reduced-motion: no-preference)",
+          desktop: "(min-width: 997px) and (pointer: fine)",
+        },
+        (mediaContext) => {
+          const { motion, desktop } = mediaContext.conditions as { motion: boolean; desktop: boolean };
+          if (!motion) return;
+
+          gsap.timeline({ defaults: { ease: "power3.out" } })
+            .from("[data-skill-hero] > *", { opacity: 0, y: 24, duration: .65, stagger: .07 })
+            .from("[data-skill-toolbar]", { opacity: 0, y: 16, duration: .5 }, "-=.3")
+            .from("[data-skill-card]", { opacity: 0, y: 28, scale: .97, duration: .62, stagger: .075 }, "-=.28");
+
+          const input = root.current?.querySelector<HTMLElement>("[data-skill-search]");
+          if (input) {
+            const scaleTo = gsap.quickTo(input, "scale", { duration: .25, ease: "power3.out" });
+            const focus = () => scaleTo(1.012);
+            const blur = () => scaleTo(1);
+            input.addEventListener("focus", focus);
+            input.addEventListener("blur", blur);
+            context.add(() => { input.removeEventListener("focus", focus); input.removeEventListener("blur", blur); });
+          }
+
+          if (!desktop) return;
+          gsap.utils.toArray<HTMLElement>("[data-skill-card]").forEach((card) => {
+            gsap.set(card, { transformPerspective: 950, transformOrigin: "center" });
+            const rotateX = gsap.quickTo(card, "rotationX", { duration: .38, ease: "power3.out" });
+            const rotateY = gsap.quickTo(card, "rotationY", { duration: .38, ease: "power3.out" });
+            const yTo = gsap.quickTo(card, "y", { duration: .38, ease: "power3.out" });
+            const move = (event: PointerEvent) => {
+              const rect = card.getBoundingClientRect();
+              rotateX(((event.clientY - rect.top) / rect.height - .5) * -6);
+              rotateY(((event.clientX - rect.left) / rect.width - .5) * 7);
+              yTo(-5);
+            };
+            const leave = () => { rotateX(0); rotateY(0); yTo(0); };
+            card.addEventListener("pointermove", move, { passive: true });
+            card.addEventListener("pointerleave", leave);
+            context.add(() => { card.removeEventListener("pointermove", move); card.removeEventListener("pointerleave", leave); });
+          });
+        },
+      );
+      return () => mm.revert();
+    },
+    { scope: root, dependencies: [type, query], revertOnUpdate: true },
+  );
 
   return (
-    <div className={`${styles.categoryPage} ${styles[type]}`}>
-      <header className={styles.hero}>
+    <div ref={root} className={`${styles.categoryPage} ${styles[type]}`}>
+      <header className={styles.hero} data-skill-hero>
         <div className={styles.heroContent}>
           <span className={styles.eyebrow}>{meta.eyebrow}</span>
           <h1>{meta.title}</h1>
@@ -59,9 +132,33 @@ export default function SkillCategoryGrid({ type }: { type: CategoryType }) {
         </div>
       </header>
 
+      <div className={styles.toolbar} data-skill-toolbar>
+        <nav className={styles.categoryNav} aria-label="Skills 分类">
+          {categoryLinks.map((category) => (
+            <Link
+              key={category.type}
+              to={category.href}
+              className={category.type === type ? styles.categoryActive : undefined}
+            >
+              {category.label}
+            </Link>
+          ))}
+        </nav>
+        <label className={styles.search} data-skill-search>
+          <span aria-hidden="true">⌕</span>
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="搜索当前分类"
+            aria-label="搜索 Skills"
+          />
+          <kbd>{filteredItems.length}</kbd>
+        </label>
+      </div>
+
       <div className={styles.grid}>
-        {items.map((item, index) => (
-          <Link className={styles.card} to={item.href} key={item.href}>
+        {filteredItems.map((item, index) => (
+          <Link className={styles.card} to={item.href} key={item.href} data-skill-card data-interactive>
             <div className={styles.cardTop}>
               <span className={styles.icon}>{item.icon}</span>
               <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
@@ -74,8 +171,14 @@ export default function SkillCategoryGrid({ type }: { type: CategoryType }) {
             </div>
           </Link>
         ))}
+        {filteredItems.length === 0 && (
+          <div className={styles.empty} role="status">
+            <span>NO MATCH</span>
+            <h2>没有找到相关 Skill</h2>
+            <p>换一个技术词试试，例如 React、测试或图像。</p>
+          </div>
+        )}
       </div>
     </div>
   );
 }
-

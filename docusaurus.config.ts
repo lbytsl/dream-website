@@ -53,8 +53,8 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
-          readingTime: ({ content, frontMatter, defaultReadingTime }) =>
-            defaultReadingTime({ content, options: { wordsPerMinute: 300 } }),
+          readingTime: ({ content, locale, defaultReadingTime }) =>
+            defaultReadingTime({ content, locale, options: { wordsPerMinute: 300 } }),
           feedOptions: {
             type: ["rss", "atom"],
             xslt: true,
@@ -239,7 +239,7 @@ const config: Config = {
         alt: "Dream Logo",
         src: "img/logo.jpg",
       },
-      hideOnScroll: true,
+      hideOnScroll: false,
       items: [
         {
           label: "首页",
