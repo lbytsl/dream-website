@@ -56,6 +56,31 @@ const paths = [
   },
 ];
 
+const featuredProjects = [
+  {
+    id: "sql-to-er",
+    number: "01",
+    eyebrow: "SCHEMA VISUALIZATION",
+    title: "sql_to_ER",
+    summary: "把 SQL DDL 直接变成清晰、可编辑、可交付的 ER 图。让数据库设计从文本推演进入可视化协作。",
+    tags: ["DDL PARSER", "VISUAL EDITOR", "PNG · SVG · PDF"],
+    href: "https://github.com/lbytsl/sql_to_ER",
+    event: "homepage-project-sql-to-er",
+    tone: "light",
+  },
+  {
+    id: "promptops",
+    number: "02",
+    eyebrow: "PROMPT QUALITY ENGINEERING",
+    title: "PromptOps",
+    summary: "为 Prompt 建立审计、评测、测试、对比与发布流程。把“感觉不错”升级成可验证的工程质量。",
+    tags: ["AUDIT", "EVALUATE", "TEST · RELEASE"],
+    href: "https://github.com/lbytsl/skills-promptops",
+    event: "homepage-project-promptops",
+    tone: "dark",
+  },
+];
+
 export default function AnimatedHome(): React.ReactNode {
   const root = useRef<HTMLDivElement>(null);
   const hero = useRef<HTMLElement>(null);
@@ -269,11 +294,11 @@ export default function AnimatedHome(): React.ReactNode {
             从 Prompt、Skills 到 Agent 工程，读懂，然后真正做出来。
           </p>
           <div className={styles.heroActions} data-hero-actions>
-            <Link className={styles.primaryButton} to="/blog" data-magnetic>
-              开始探索 <span aria-hidden="true">↗</span>
-            </Link>
-            <Link className={styles.textButton} to="/about" data-magnetic>
-              认识 Dream <span aria-hidden="true">→</span>
+            <a className={styles.primaryButton} href="#featured-projects" data-magnetic>
+              查看开源项目 <span aria-hidden="true">↓</span>
+            </a>
+            <Link className={styles.textButton} to="/cooperation" data-magnetic data-umami-event="homepage-cooperation">
+              合作咨询 <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
@@ -314,6 +339,63 @@ export default function AnimatedHome(): React.ReactNode {
                 <span className={styles.cardAction}>{path.action} <b aria-hidden="true">↗</b></span>
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section id="featured-projects" className={styles.projects} aria-labelledby="projects-title">
+          <div className={styles.projectsIntro} data-reveal>
+            <div>
+              <p className={styles.sectionLabel}>FEATURED BUILDS · OPEN SOURCE</p>
+              <h2 id="projects-title">正在解决的<br />真实问题。</h2>
+            </div>
+            <p>从数据库建模到 Prompt 质量工程，这些不是概念演示，而是我持续维护、用于真实工作流的产品。</p>
+          </div>
+
+          <div className={styles.projectStack}>
+            {featuredProjects.map((project) => (
+              <a
+                key={project.id}
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`${styles.projectCard} ${project.tone === "light" ? styles.projectLight : styles.projectDark}`}
+                data-reveal
+                data-home-tilt
+                data-umami-event={project.event}
+              >
+                <div className={styles.projectMeta}>
+                  <span>{project.number}</span>
+                  <span>{project.eyebrow}</span>
+                  <span>OPEN SOURCE ↗</span>
+                </div>
+                <div className={styles.projectBody}>
+                  <div>
+                    <h3>{project.title}</h3>
+                    <p>{project.summary}</p>
+                  </div>
+                  {project.id === "sql-to-er" ? (
+                    <div className={styles.schemaPreview} aria-hidden="true">
+                      <div><b>users</b><span>id · PK</span><span>email</span></div>
+                      <i />
+                      <div><b>orders</b><span>id · PK</span><span>user_id · FK</span></div>
+                    </div>
+                  ) : (
+                    <div className={styles.promptPreview} aria-hidden="true">
+                      <div><span>01</span><b>AUDIT</b><i>PASS</i></div>
+                      <div><span>02</span><b>EVALUATE</b><i>92.4</i></div>
+                      <div><span>03</span><b>RELEASE</b><i>READY</i></div>
+                    </div>
+                  )}
+                </div>
+                <div className={styles.projectTags}>
+                  {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+              </a>
+            ))}
+          </div>
+          <div className={styles.projectCta} data-reveal>
+            <p>有 AI 产品、知识库或自动化工作流想法？</p>
+            <Link to="/cooperation" data-umami-event="homepage-projects-cooperation">聊聊如何落地 <span>→</span></Link>
           </div>
         </section>
 

@@ -1,5 +1,4 @@
 .root { display: contents; }
 .progress { position: fixed; z-index: 1002; top: 0; left: 0; width: 100%; height: 3px; transform: scaleX(0); transform-origin: left center; background: linear-gradient(90deg, #2997ff, #8c5cff 60%, #d06cff); box-shadow: 0 0 16px rgba(90, 120, 255, .7); pointer-events: none; visibility: hidden; }
-.transition { position: fixed; z-index: 2000; inset: 0; background: linear-gradient(110deg, #08090d 12%, #12162a 55%, #171032); transform: scaleX(0); pointer-events: none; }
 .cursor { position: fixed; z-index: 2100; top: -11px; left: -11px; width: 22px; height: 22px; border: 1px solid rgba(111, 167, 255, .65); border-radius: 50%; background: rgba(91, 112, 255, .07); box-shadow: 0 0 20px rgba(92, 102, 255, .28); pointer-events: none; visibility: hidden; will-change: transform; }
-@media (max-width: 996px), (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor, .transition { display: none; } }
+@media (max-width: 996px), (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor { display: none; } }

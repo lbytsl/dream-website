@@ -68,52 +68,47 @@ export default function SkillCategoryGrid({ type }: { type: CategoryType }) {
   }, [items, query]);
 
   useGSAP(
-    (context) => {
-      const mm = gsap.matchMedia();
-      mm.add(
-        {
-          motion: "(prefers-reduced-motion: no-preference)",
-          desktop: "(min-width: 997px) and (pointer: fine)",
-        },
-        (mediaContext) => {
-          const { motion, desktop } = mediaContext.conditions as { motion: boolean; desktop: boolean };
-          if (!motion) return;
+    () => {
+      const motion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const desktop = window.matchMedia("(min-width: 997px) and (pointer: fine)").matches;
+      const cleanups: Array<() => void> = [];
+      if (!motion) return;
 
-          gsap.timeline({ defaults: { ease: "power3.out" } })
-            .from("[data-skill-hero] > *", { opacity: 0, y: 24, duration: .65, stagger: .07 })
-            .from("[data-skill-toolbar]", { opacity: 0, y: 16, duration: .5 }, "-=.3")
-            .from("[data-skill-card]", { opacity: 0, y: 28, scale: .97, duration: .62, stagger: .075 }, "-=.28");
+      gsap.timeline({ defaults: { ease: "power3.out" } })
+        .from("[data-skill-hero] > *", { opacity: 0, y: 24, duration: .65, stagger: .07 })
+        .from("[data-skill-toolbar]", { opacity: 0, y: 16, duration: .5 }, "-=.3")
+        .from("[data-skill-card]", { opacity: 0, y: 28, scale: .97, duration: .62, stagger: .075 }, "-=.28");
 
-          const input = root.current?.querySelector<HTMLElement>("[data-skill-search]");
-          if (input) {
-            const scaleTo = gsap.quickTo(input, "scale", { duration: .25, ease: "power3.out" });
-            const focus = () => scaleTo(1.012);
-            const blur = () => scaleTo(1);
-            input.addEventListener("focus", focus);
-            input.addEventListener("blur", blur);
-            context.add(() => { input.removeEventListener("focus", focus); input.removeEventListener("blur", blur); });
-          }
+      const input = root.current?.querySelector<HTMLElement>("[data-skill-search]");
+      if (input) {
+        const scaleTo = gsap.quickTo(input, "scale", { duration: .25, ease: "power3.out" });
+        const focus = () => scaleTo(1.012);
+        const blur = () => scaleTo(1);
+        input.addEventListener("focus", focus);
+        input.addEventListener("blur", blur);
+        cleanups.push(() => { input.removeEventListener("focus", focus); input.removeEventListener("blur", blur); });
+      }
 
-          if (!desktop) return;
-          gsap.utils.toArray<HTMLElement>("[data-skill-card]").forEach((card) => {
-            gsap.set(card, { transformPerspective: 950, transformOrigin: "center" });
-            const rotateX = gsap.quickTo(card, "rotationX", { duration: .38, ease: "power3.out" });
-            const rotateY = gsap.quickTo(card, "rotationY", { duration: .38, ease: "power3.out" });
-            const yTo = gsap.quickTo(card, "y", { duration: .38, ease: "power3.out" });
-            const move = (event: PointerEvent) => {
-              const rect = card.getBoundingClientRect();
-              rotateX(((event.clientY - rect.top) / rect.height - .5) * -6);
-              rotateY(((event.clientX - rect.left) / rect.width - .5) * 7);
-              yTo(-5);
-            };
-            const leave = () => { rotateX(0); rotateY(0); yTo(0); };
-            card.addEventListener("pointermove", move, { passive: true });
-            card.addEventListener("pointerleave", leave);
-            context.add(() => { card.removeEventListener("pointermove", move); card.removeEventListener("pointerleave", leave); });
-          });
-        },
-      );
-      return () => mm.revert();
+      if (desktop) {
+        gsap.utils.toArray<HTMLElement>("[data-skill-card]").forEach((card) => {
+          gsap.set(card, { transformPerspective: 950, transformOrigin: "center" });
+          const rotateX = gsap.quickTo(card, "rotationX", { duration: .38, ease: "power3.out" });
+          const rotateY = gsap.quickTo(card, "rotationY", { duration: .38, ease: "power3.out" });
+          const yTo = gsap.quickTo(card, "y", { duration: .38, ease: "power3.out" });
+          const move = (event: PointerEvent) => {
+            const rect = card.getBoundingClientRect();
+            rotateX(((event.clientY - rect.top) / rect.height - .5) * -6);
+            rotateY(((event.clientX - rect.left) / rect.width - .5) * 7);
+            yTo(-5);
+          };
+          const leave = () => { rotateX(0); rotateY(0); yTo(0); };
+          card.addEventListener("pointermove", move, { passive: true });
+          card.addEventListener("pointerleave", leave);
+          cleanups.push(() => { card.removeEventListener("pointermove", move); card.removeEventListener("pointerleave", leave); });
+        });
+      }
+
+      return () => cleanups.forEach((cleanup) => cleanup());
     },
     { scope: root, dependencies: [type, query], revertOnUpdate: true },
   );

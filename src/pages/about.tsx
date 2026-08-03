@@ -1,7 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Layout from "@theme/Layout";
 import Translate from "@docusaurus/Translate";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import styles from "./about.module.css";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 const skillCategories = [
   {
@@ -150,22 +157,178 @@ function StarDisplay({ repo }: { repo: string }) {
 }
 
 export default function About(): React.ReactNode {
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          motion: "(prefers-reduced-motion: no-preference)",
+          desktop: "(min-width: 997px) and (pointer: fine)",
+        },
+        (mediaContext) => {
+          const { motion, desktop } = mediaContext.conditions as {
+            motion: boolean;
+            desktop: boolean;
+          };
+
+          if (!motion) {
+            gsap.set(
+              "[data-about-intro], [data-about-section], [data-about-card], [data-about-project]",
+              { clearProps: "all" },
+            );
+            return;
+          }
+
+          const intro = gsap.timeline({
+            defaults: { duration: desktop ? 0.82 : 0.56, ease: "power3.out" },
+          });
+          intro
+            .from("[data-about-kicker]", { autoAlpha: 0, y: 14 })
+            .from("[data-about-name]", { autoAlpha: 0, yPercent: 70, rotationX: -18 }, "-=0.48")
+            .from("[data-about-copy]", { autoAlpha: 0, y: 22, stagger: 0.1 }, "-=0.46")
+            .from("[data-about-social]", { autoAlpha: 0, y: 16, scale: 0.96, stagger: 0.08 }, "-=0.42");
+
+          gsap.to("[data-about-orb='primary']", {
+            xPercent: desktop ? 14 : 6,
+            yPercent: -10,
+            rotation: 18,
+            duration: 8,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
+          gsap.to("[data-about-orb='secondary']", {
+            xPercent: desktop ? -18 : -8,
+            yPercent: 14,
+            rotation: -14,
+            duration: 10,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
+
+          gsap.utils.toArray<HTMLElement>("[data-about-section]").forEach((section) => {
+            const title = section.querySelector<HTMLElement>("[data-about-section-title]");
+            const content = section.querySelector<HTMLElement>("[data-about-section-content]");
+            const skillCards = Array.from(section.querySelectorAll<HTMLElement>("[data-about-card]"));
+            const projectCards = Array.from(section.querySelectorAll<HTMLElement>("[data-about-project]"));
+            const sectionTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: section,
+                start: "top 84%",
+                toggleActions: "play complete play complete",
+              },
+              defaults: { ease: "power3.out" },
+            });
+
+            if (title) {
+              sectionTimeline.from(title, {
+                autoAlpha: 0,
+                x: desktop ? -26 : 0,
+                y: desktop ? 0 : 20,
+                duration: 0.68,
+              });
+            }
+            if (skillCards.length) {
+              sectionTimeline.from(skillCards, {
+                autoAlpha: 0,
+                y: desktop ? 44 : 26,
+                rotationX: desktop ? -8 : 0,
+                scale: 0.98,
+                duration: 0.82,
+                stagger: desktop ? 0.11 : 0.07,
+              }, "-=0.36");
+            } else if (projectCards.length && content) {
+              sectionTimeline.from(content, {
+                autoAlpha: 0,
+                x: desktop ? 28 : 0,
+                y: desktop ? 0 : 24,
+                duration: 0.76,
+              }, "-=0.36");
+            } else if (content) {
+              sectionTimeline.from(content, { autoAlpha: 0, y: 28, duration: 0.76 }, "-=0.36");
+            }
+          });
+
+          if (!desktop) return;
+
+          const cleanups: Array<() => void> = [];
+          gsap.utils.toArray<HTMLElement>("[data-about-tilt]").forEach((card) => {
+            gsap.set(card, { transformPerspective: 900, transformOrigin: "center" });
+            const rotateX = gsap.quickTo(card, "rotationX", { duration: 0.38, ease: "power3.out" });
+            const rotateY = gsap.quickTo(card, "rotationY", { duration: 0.38, ease: "power3.out" });
+            const yTo = gsap.quickTo(card, "y", { duration: 0.3, ease: "power3.out" });
+            const move = (event: PointerEvent) => {
+              const rect = card.getBoundingClientRect();
+              rotateX(((event.clientY - rect.top) / rect.height - 0.5) * -5);
+              rotateY(((event.clientX - rect.left) / rect.width - 0.5) * 5);
+            };
+            const enter = () => yTo(-5);
+            const leave = () => {
+              rotateX(0);
+              rotateY(0);
+              yTo(0);
+            };
+            card.addEventListener("pointermove", move, { passive: true });
+            card.addEventListener("pointerenter", enter);
+            card.addEventListener("pointerleave", leave);
+            cleanups.push(() => {
+              card.removeEventListener("pointermove", move);
+              card.removeEventListener("pointerenter", enter);
+              card.removeEventListener("pointerleave", leave);
+            });
+          });
+
+          gsap.to("[data-about-ambient]", {
+            yPercent: 18,
+            ease: "none",
+            scrollTrigger: {
+              trigger: root.current,
+              start: "top top",
+              end: "bottom bottom",
+              scrub: 1,
+            },
+          });
+
+          return () => cleanups.forEach((cleanup) => cleanup());
+        },
+        root.current ?? undefined,
+      );
+
+      const refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
+      return () => {
+        cancelAnimationFrame(refreshFrame);
+        mm.revert();
+      };
+    },
+    { scope: root },
+  );
+
   return (
     <Layout
       title="关于我 — AI 全栈开发工程师 | Dream"
       description="AI 全栈开发工程师 — 精通 Spring AI、LangChain/LangGraph、Prompt Engineering、RAG 知识库、MCP 协议。Java + Python 双栈，从后端到前端全覆盖 ✓ 欢迎技术交流与合作 →"
     >
-      <main className={styles.page}>
+      <main ref={root} className={styles.page}>
+        <div className={styles.ambient} data-about-ambient aria-hidden="true">
+          <i className={styles.orbPrimary} data-about-orb="primary" />
+          <i className={styles.orbSecondary} data-about-orb="secondary" />
+          <span className={styles.ambientGrid} />
+        </div>
         <div className={styles.container}>
           {/* Profile Header */}
-          <section className={styles.profile}>
-            <h1 className={styles.name}>
+          <section className={styles.profile} data-about-intro>
+            <p className={styles.eyebrow} data-about-kicker>DREAM / AI ENGINEER</p>
+            <h1 className={styles.name} data-about-name>
               <Translate id="about.name">Dream</Translate>
             </h1>
-            <p className={styles.title}>
+            <p className={styles.title} data-about-copy>
               <Translate id="about.tagline">全栈 AI 开发工程师</Translate>
             </p>
-            <p className={styles.bio}>
+            <p className={styles.bio} data-about-copy>
               <Translate id="about.bio">
                 热爱 AI 技术和开源，专注于 Prompt Engineering、RAG 系统和 AI 工程实践。
                 致力于通过技术文章和开源项目帮助更多开发者进入 AI 开发领域。
@@ -173,13 +336,13 @@ export default function About(): React.ReactNode {
             </p>
 
             <div className={styles.socialLinks}>
-              <a href="https://github.com/lbytsl" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              <a href="https://github.com/lbytsl" target="_blank" rel="noopener noreferrer" className={styles.socialLink} data-about-social data-magnetic>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
                 </svg>
                 GitHub
               </a>
-              <a href="https://blog.csdn.net/weixin_68705666" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              <a href="https://blog.csdn.net/weixin_68705666" target="_blank" rel="noopener noreferrer" className={styles.socialLink} data-about-social data-magnetic>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
@@ -190,11 +353,11 @@ export default function About(): React.ReactNode {
           </section>
 
           {/* Core Competencies */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>核心能力</h2>
-            <div className={styles.skillGrid}>
+          <section className={styles.section} data-about-section>
+            <h2 className={styles.sectionTitle} data-about-section-title>核心能力</h2>
+            <div className={styles.skillGrid} data-about-section-content data-about-skill-grid>
               {skillCategories.map((cat) => (
-                <div key={cat.category} className={styles.skillCategory} data-category={cat.category}>
+                <div key={cat.category} className={styles.skillCategory} data-category={cat.category} data-about-card data-about-tilt>
                   <div className={styles.skillAccent} />
                   <div className={styles.skillCategoryHeader}>
                     <span className={styles.skillCategoryIcon}>
@@ -216,9 +379,9 @@ export default function About(): React.ReactNode {
           </section>
 
           {/* Open Source */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>开源项目</h2>
-            <div className={styles.projectGrid}>
+          <section className={styles.section} data-about-section>
+            <h2 className={styles.sectionTitle} data-about-section-title>开源项目</h2>
+            <div className={styles.projectGrid} data-about-section-content data-about-project-grid>
               {openSourceProjects.map((proj) => (
                 <a
                   key={proj.name}
@@ -226,6 +389,8 @@ export default function About(): React.ReactNode {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.projectCard}
+                  data-about-project
+                  data-about-tilt
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={styles.projectIcon}>
                     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
@@ -244,18 +409,20 @@ export default function About(): React.ReactNode {
           </section>
 
           {/* Contact */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>联系方式</h2>
-            <p className={styles.contactText}>
-              如果你对 AI 开发有兴趣，或想交流 Prompt 工程与 Agent 开发经验，欢迎通过 GitHub 联系我。
-            </p>
-            <div className={styles.contactLinks}>
-              <a href="https://github.com/lbytsl" target="_blank" rel="noopener noreferrer" className="button button--primary button--lg">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: 8 }}>
-                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-                GitHub
-              </a>
+          <section className={styles.section} data-about-section>
+            <h2 className={styles.sectionTitle} data-about-section-title>联系方式</h2>
+            <div data-about-section-content>
+              <p className={styles.contactText}>
+                如果你对 AI 开发有兴趣，或想交流 Prompt 工程与 Agent 开发经验，欢迎通过 GitHub 联系我。
+              </p>
+              <div className={styles.contactLinks}>
+                <a href="https://github.com/lbytsl" target="_blank" rel="noopener noreferrer" className="button button--primary button--lg" data-magnetic>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: 8 }}>
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                  </svg>
+                  GitHub
+                </a>
+              </div>
             </div>
           </section>
         </div>

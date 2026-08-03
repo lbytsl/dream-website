@@ -19,6 +19,18 @@ const config: Config = {
   projectName: "dream-website",
   trailingSlash: false,
 
+  scripts: [
+    {
+      src: "https://cloud.umami.is/script.js",
+      defer: true,
+      "data-website-id": "5057bcba-841a-47fd-b646-bb9a50908360",
+    },
+    {
+      src: "https://hm.baidu.com/hm.js?8abd5bd11f5caca283361d7ac53ebe68",
+      async: true,
+    },
+  ],
+
   onBrokenLinks: "warn",
 
 
@@ -86,6 +98,12 @@ const config: Config = {
   // headTags — 全局 <head> 标签注入 (hreflang, DNS prefetch 等)
   // ============================================================
   headTags: [
+    // 百度统计在加载远程脚本前需要先建立命令队列，供 SPA 路由统计复用。
+    {
+      tagName: "script",
+      attributes: {},
+      innerHTML: "window._hmt = window._hmt || [];",
+    },
     // hreflang: 中文页面
     {
       tagName: "link",
@@ -112,6 +130,14 @@ const config: Config = {
         href: "https://cdn.jsdelivr.net",
       },
     },
+    {
+      tagName: "link",
+      attributes: { rel: "preconnect", href: "https://cloud.umami.is" },
+    },
+    {
+      tagName: "link",
+      attributes: { rel: "dns-prefetch", href: "https://hm.baidu.com" },
+    },
     // ============ JSON-LD 结构化数据 ============
     // Organization
     {
@@ -125,6 +151,19 @@ const config: Config = {
         "logo": "https://dream.mindweave.top/img/logo.jpg",
         "sameAs": ["https://github.com/lbytsl"],
         "description": "AI 开发前沿技术平台，专注 Prompt 工程、RAG、Skills 工具集与 LLM 实战",
+      }),
+    },
+    {
+      tagName: "script",
+      attributes: { type: "application/ld+json" },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Dream AI 开发与咨询",
+        "url": "https://dream.mindweave.top/cooperation",
+        "areaServed": "CN",
+        "description": "提供 RAG 知识库、AI Agent、企业 AI 应用咨询、Prompt 评测与全栈产品开发服务。",
+        "sameAs": ["https://github.com/lbytsl"],
       }),
     },
     // WebSite
@@ -270,6 +309,11 @@ const config: Config = {
           position: "left",
         },
         {
+          label: "合作",
+          to: "/cooperation",
+          position: "left",
+        },
+        {
           href: "https://github.com/lbytsl",
           position: "right",
           className: "header-github-link",
@@ -304,6 +348,8 @@ const config: Config = {
           title: "更多",
           items: [
             { label: "关于我", to: "/about" },
+            { label: "合作咨询", to: "/cooperation" },
+            { label: "隐私说明", to: "/privacy" },
             { label: "GitHub", href: "https://github.com/lbytsl" },
           ],
         },

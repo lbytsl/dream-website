@@ -3,6 +3,7 @@ import { useLocation } from "@docusaurus/router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import MobileToc from "./MobileToc";
 import styles from "./SiteMotion.module.css";
 
 if (typeof window !== "undefined") {
@@ -12,7 +13,6 @@ if (typeof window !== "undefined") {
 export default function SiteMotion({ children }: { children: React.ReactNode }): React.ReactNode {
   const root = useRef<HTMLDivElement>(null);
   const progress = useRef<HTMLDivElement>(null);
-  const transition = useRef<HTMLDivElement>(null);
   const cursor = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
@@ -22,12 +22,9 @@ export default function SiteMotion({ children }: { children: React.ReactNode }):
       if (!scope) return;
 
       const mm = gsap.matchMedia();
+      const manualCleanups: Array<() => void> = [];
       const article = scope.querySelector<HTMLElement>("article");
       const navbar = scope.querySelector<HTMLElement>(".navbar");
-
-      gsap.timeline({ defaults: { ease: "power3.inOut" } })
-        .set(transition.current, { transformOrigin: "right center", scaleX: 1 })
-        .to(transition.current, { scaleX: 0, duration: 0.62 });
 
       if (navbar) {
         const navY = gsap.quickTo(navbar, "yPercent", { duration: 0.42, ease: "power3.out" });
@@ -49,7 +46,9 @@ export default function SiteMotion({ children }: { children: React.ReactNode }):
         });
 
         const sections = gsap.utils.toArray<HTMLElement>(
-          article.querySelectorAll("h2, h3, blockquote, .theme-code-block, [class*='codeBlockContainer']"),
+          article.querySelectorAll(
+            ".theme-doc-markdown > h2, .theme-doc-markdown > h3, .theme-doc-markdown > blockquote, .theme-doc-markdown > .theme-code-block, .theme-doc-markdown > [class*='codeBlockContainer'], .markdown > h2, .markdown > h3, .markdown > blockquote, .markdown > .theme-code-block, .markdown > [class*='codeBlockContainer']",
+          ),
         ).slice(0, 48);
 
         sections.forEach((section, index) => {
@@ -73,7 +72,7 @@ export default function SiteMotion({ children }: { children: React.ReactNode }):
           const leave = () => { yTo(0); scaleTo(1); };
           block.addEventListener("pointerenter", enter);
           block.addEventListener("pointerleave", leave);
-          context.add(() => {
+          manualCleanups.push(() => {
             block.removeEventListener("pointerenter", enter);
             block.removeEventListener("pointerleave", leave);
           });
@@ -134,6 +133,7 @@ export default function SiteMotion({ children }: { children: React.ReactNode }):
       const refreshFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
       return () => {
         cancelAnimationFrame(refreshFrame);
+        manualCleanups.forEach((cleanup) => cleanup());
         mm.revert();
       };
     },
@@ -143,8 +143,8 @@ export default function SiteMotion({ children }: { children: React.ReactNode }):
   return (
     <div ref={root} className={styles.root}>
       <div ref={progress} className={styles.progress} aria-hidden="true" />
-      <div ref={transition} className={styles.transition} aria-hidden="true" />
       <div ref={cursor} className={styles.cursor} aria-hidden="true" />
+      <MobileToc />
       {children}
     </div>
   );
