@@ -19,6 +19,15 @@ const config: Config = {
   projectName: "dream-website",
   trailingSlash: false,
 
+  customFields: {
+    visitStats: {
+      // 仅填写已公开的 Umami 分享配置，不要填写账户密码或 API 密钥。
+      shareUrl: "https://cloud.umami.is/share/kAefANYnw5QGEgJG",
+      apiBaseUrl: "https://cloud.umami.is/analytics/us/api",
+      websiteId: "5057bcba-841a-47fd-b646-bb9a50908360",
+    },
+  },
+
   scripts: [
     {
       src: "https://cloud.umami.is/script.js",
@@ -312,6 +321,10 @@ const config: Config = {
           label: "合作",
           to: "/cooperation",
           position: "left",
+        },
+        {
+          type: "custom-siteVisitStats",
+          position: "right",
         },
         {
           href: "https://github.com/lbytsl",
