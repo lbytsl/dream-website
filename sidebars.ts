@@ -87,6 +87,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "skills/design/frontend-design/index",
             "skills/design/web-design-guidelines/index",
+            "skills/design/impeccable/index",
           ],
         },
         {

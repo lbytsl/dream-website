@@ -1,0 +1,123 @@
+{
+  "microsoft/azure-skills/microsoft-foundry": {
+    "repo": "microsoft/azure-skills",
+    "installs": {
+      "display": "662.1K",
+      "updatedAt": "2026-11-09T07:25:01.741Z"
+    },
+    "stars": {
+      "value": 1628,
+      "updatedAt": "2026-11-09T07:25:02.399Z"
+    }
+  },
+  "101-skills/skills/ai-image-generation": {
+    "repo": "inference-sh/skills",
+    "installs": {
+      "display": "14",
+      "updatedAt": "2026-11-09T07:25:05.480Z"
+    },
+    "stars": {
+      "value": 802,
+      "updatedAt": "2026-11-09T07:25:05.891Z"
+    }
+  },
+  "remotion-dev/skills/remotion-best-practices": {
+    "repo": "remotion-dev/skills",
+    "installs": {
+      "display": "776.8K",
+      "updatedAt": "2026-11-09T07:25:06.799Z"
+    },
+    "stars": {
+      "value": 6642,
+      "updatedAt": "2026-11-09T07:25:07.202Z"
+    }
+  },
+  "anthropics/skills/frontend-design": {
+    "repo": "anthropics/skills",
+    "installs": {
+      "display": "1.1M",
+      "updatedAt": "2026-11-09T07:25:08.428Z"
+    },
+    "stars": {
+      "value": 189945,
+      "updatedAt": "2026-11-09T07:25:08.831Z"
+    }
+  },
+  "pbakaus/impeccable/impeccable": {
+    "repo": "pbakaus/impeccable",
+    "installs": {
+      "display": "394.9K",
+      "updatedAt": "2026-11-09T07:25:09.712Z"
+    },
+    "stars": {
+      "value": 106399,
+      "updatedAt": "2026-11-09T07:25:10.224Z"
+    }
+  },
+  "vercel-labs/agent-skills/web-design-guidelines": {
+    "repo": "vercel-labs/agent-skills",
+    "installs": {
+      "display": "840.2K",
+      "updatedAt": "2026-11-09T07:25:10.912Z"
+    },
+    "stars": {
+      "value": 33742,
+      "updatedAt": "2026-11-09T07:25:11.773Z"
+    }
+  },
+  "vercel-labs/agent-browser/agent-browser": {
+    "repo": "vercel-labs/agent-browser",
+    "installs": {
+      "display": "1.4M",
+      "updatedAt": "2026-11-09T07:25:13.125Z"
+    },
+    "stars": {
+      "value": 47918,
+      "updatedAt": "2026-11-09T07:25:13.535Z"
+    }
+  },
+  "vercel-labs/skills/find-skills": {
+    "repo": "vercel-labs/skills",
+    "installs": {
+      "display": "4.3M",
+      "updatedAt": "2026-11-09T07:25:14.486Z"
+    },
+    "stars": {
+      "value": 38662,
+      "updatedAt": "2026-11-09T07:25:14.883Z"
+    }
+  },
+  "mattpocock/skills/improve-codebase-architecture": {
+    "repo": "mattpocock/skills",
+    "installs": {
+      "display": "1.2M",
+      "updatedAt": "2026-11-09T07:25:16.259Z"
+    },
+    "stars": {
+      "value": 318881,
+      "updatedAt": "2026-11-09T07:25:16.656Z"
+    }
+  },
+  "vercel-labs/agent-skills/vercel-react-best-practices": {
+    "repo": "vercel-labs/agent-skills",
+    "installs": {
+      "display": "882.4K",
+      "updatedAt": "2026-11-09T07:25:17.365Z"
+    },
+    "stars": {
+      "value": 33742,
+      "updatedAt": "2026-11-09T07:25:11.773Z"
+    }
+  },
+  "mattpocock/skills/tdd": {
+    "repo": "mattpocock/skills",
+    "installs": {
+      "display": "1.2M",
+      "updatedAt": "2026-11-09T07:25:18.320Z"
+    },
+    "stars": {
+      "value": 318881,
+      "updatedAt": "2026-11-09T07:25:16.656Z"
+    }
+  }
+}

@@ -15,7 +15,7 @@ const skillCategories = [
     name: "设计与前端",
     icon: "design",
     description: "AI 驱动的界面创作、设计审查与前端体验优化工具集。",
-    skills: ["Frontend Design", "Web Design Guidelines"],
+    skills: ["Frontend Design", "Web Design Guidelines", "Impeccable"],
     href: "/docs/skills/design",
   },
   {

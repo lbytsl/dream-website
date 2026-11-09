@@ -332,6 +332,12 @@ const config: Config = {
           className: "header-github-link",
           "aria-label": "GitHub repository",
         },
+        {
+          href: "https://blog.csdn.net/weixin_68705666",
+          position: "right",
+          className: "header-csdn-link",
+          "aria-label": "CSDN 博客",
+        },
       ],
     },
     footer: {

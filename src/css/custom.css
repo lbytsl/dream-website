@@ -112,6 +112,19 @@ body {
   opacity: 0.7;
 }
 
+/* 使用 CSDN 官网图标的本地副本，保留品牌配色并避免外链加载失败。 */
+.header-csdn-link::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: block;
+  background: url("/img/csdn.ico") center / contain no-repeat;
+}
+
+.header-csdn-link:hover {
+  opacity: 0.7;
+}
+
 /* ============================================================
  * Footer
  * ============================================================ */
@@ -275,6 +288,17 @@ input:focus-visible {
 /* ============================================================
  * Responsive
  * ============================================================ */
+@media (min-width: 997px) {
+  /* 仅隐藏博文右侧目录的滚动条，保留滚轮与触控滚动以访问完整目录。 */
+  .blog-post-page main + .col > .thin-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .blog-post-page main + .col > .thin-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @media (max-width: 996px) {
   .theme-doc-toc-mobile { display: none; }
   .navbar { will-change: auto; }

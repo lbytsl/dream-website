@@ -4,6 +4,9 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
+  # 每天北京时间 08:23 同步统计并重新部署，无需修改文档中的数字。
+  schedule:
+    - cron: '23 0 * * *'
 
 # 同一时间只保留一个 Pages 部署。
 concurrency:
@@ -34,8 +37,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # 外部统计读取失败时沿用上次成功部署的快照，缓存中不包含任何凭据。
+      - name: Restore skill statistics
+        uses: actions/cache/restore@v4
+        with:
+          path: static/data/skill-stats.json
+          key: skill-stats-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: skill-stats-
+
       - name: Build website
         run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -48,3 +61,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Save skill statistics
+        uses: actions/cache/save@v4
+        with:
+          path: static/data/skill-stats.json
+          key: skill-stats-${{ github.run_id }}-${{ github.run_attempt }}

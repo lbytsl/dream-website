@@ -28,6 +28,19 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
+### Skills 安装量与 GitHub Star
+
+技能详情通过 `src/components/SkillStat.tsx` 展示统计，来源对应关系自动读取各详情页的“来源”和“详情”链接。
+
+- 安装量：构建时读取 skills.sh 公开详情页的统计栏，保留其 K/M 等展示精度；不是本站安装次数，也不代表所有渠道的精确安装总数。
+- Star：构建时生成回退快照；访问页面时通过 GitHub API 更新，同一仓库共享请求并缓存一小时。页面可见时自动检查过期缓存，恢复可见时也检查。
+- 每项按北京时间（Asia/Shanghai）显示为 `33,732（更新于2026-11-09 11:08）`；读取失败保留旧值与旧时间，无历史数据时显示“待更新”。浏览器禁用存储时使用内存缓存。
+- `npm run build` 自动同步；也可执行 `npm run sync:skill-stats` 单独刷新快照。开发服务器启动前可先运行此命令。
+- Pages 工作流每天北京时间 08:23 构建部署，并缓存上次成功部署的快照；实际执行时间受 GitHub Actions 调度影响。定时工作流需要位于仓库默认分支。
+- 构建阶段可选 `GITHUB_TOKEN` 增加 GitHub API 配额；工作流使用自带令牌，前端不包含令牌。skills.sh 页面结构变化会告警并保留旧数据。
+
+验证：`npm run test:skill-stats`、`npm run typecheck`、`npm run build`。
+
 ### 顶部访问统计
 
 顶部导航栏右侧显示 Umami 的浏览量和今日访客，手机端也会保留。

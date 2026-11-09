@@ -26,6 +26,7 @@ const skillData: Record<CategoryType, SkillItem[]> = {
   design: [
     { title: "Frontend Design", description: "生成更有辨识度、更接近成品的 Web 页面与组件。", href: "/docs/skills/design/frontend-design", icon: "✦", tags: ["前端设计", "UI", "组件"] },
     { title: "Web Design Guidelines", description: "按现代设计准则检查界面质量、可用性与一致性。", href: "/docs/skills/design/web-design-guidelines", icon: "◇", tags: ["设计审查", "响应式", "可访问性"] },
+    { title: "Impeccable", description: "为 AI 编码助手补充设计语言，持续审查和打磨界面、排版与交互。", href: "/docs/skills/design/impeccable", icon: "I", tags: ["界面打磨", "设计审查", "UI"] },
   ],
   engineering: [
     { title: "Vercel React Best Practices", description: "Vercel 工程团队整理的 React 与 Next.js 性能实践。", href: "/docs/skills/engineering/react-best-practices", icon: "R", tags: ["React", "Next.js", "性能"] },

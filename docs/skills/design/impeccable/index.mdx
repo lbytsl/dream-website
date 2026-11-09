@@ -1,0 +1,73 @@
+---
+sidebar_position: 5
+title: Impeccable
+description: 为 AI 编码助手补充设计语言，通过审查、排版、布局与细节打磨持续改进前端界面。
+tags: [前端设计, UI, 设计审查, 设计与前端]
+skill: true
+---
+
+import SkillStat from "@site/src/components/SkillStat";
+
+# Impeccable
+
+Impeccable 为 AI 编码助手提供一套可执行的设计语言：从产品背景出发，审查现有界面，再针对排版、配色、布局、文案和交互逐步改进。适合对已有页面或组件持续打磨，也能辅助创建新界面。
+
+| 项目 | 信息 |
+| --- | --- |
+| 分类 | design |
+| 来源 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| 官网 | [impeccable.style](https://impeccable.style/) |
+| 安装量 | <SkillStat skill="pbakaus/impeccable/impeccable" metric="installs" /> |
+| GitHub Star | <SkillStat skill="pbakaus/impeccable/impeccable" metric="stars" /> |
+| 详情 | [skills.sh](https://skills.sh/pbakaus/impeccable/impeccable) |
+
+## 适用场景
+
+- 页面已能运行，需要改善层级、留白、字体和视觉一致性。
+- 希望从用户体验与技术质量两方面审查界面，并按优先级处理问题。
+- 发布前检查响应式表现、内容溢出、错误状态和交互细节。
+- 希望 AI 遵循现有品牌与设计系统，减少千篇一律的界面表达。
+
+## 安装
+
+在目标项目根目录运行官方安装器，按提示选择编码工具及项目级或全局安装：
+
+```bash
+npx impeccable install
+```
+
+也可以通过 Skills CLI 单独安装主 Skill：
+
+```bash
+npx skills add https://github.com/pbakaus/impeccable --skill impeccable
+```
+
+安装后重新加载编码工具。已有官方安装可用 `npx impeccable update` 更新；设计检查 Hook 的安装与启用方式见[官方说明](https://impeccable.style/docs/hooks)。
+
+:::note 当前名称
+旧版 `frontend-design` 已更名为 `impeccable`，本文使用当前主 Skill。这里的旧名称属于 Impeccable 项目，与本站收录的 [Anthropic Frontend Design](/docs/skills/design/frontend-design) 是不同来源。
+:::
+
+## 使用示例
+
+先初始化项目背景，再针对一个明确的页面或组件发出指令：
+
+```text
+/impeccable init
+/impeccable critique 检查定价卡片的信息层级和操作入口
+/impeccable polish 打磨设置页面的间距、对齐和交互细节
+```
+
+支持 `$` 形式调用 Skill 的工具可使用 `$impeccable init` 等对应写法。以当前工具中的技能入口为准。
+
+| 命令 | 用途 |
+| --- | --- |
+| `critique` | 从用户体验与视觉设计角度审查界面 |
+| `audit` | 检查可访问性、性能、主题和响应式等技术质量 |
+| `typeset` / `layout` | 改善字体层级、排版与空间节奏 |
+| `polish` | 进行发布前的视觉与交互收尾 |
+| `harden` | 完善错误、溢出、国际化与边界状态 |
+
+建议每次聚焦一个区域，先审查，再改进，最后检查实际渲染结果。`init` 用于建立 `PRODUCT.md` 产品背景；需要记录现有视觉规范时，可运行 `/impeccable document` 生成 `DESIGN.md`。
+
+完整命令与用法请查阅[官方文档](https://impeccable.style/docs)。

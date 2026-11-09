@@ -1,5 +1,28 @@
 [
   {
+    "title": "那个「不生成文字」的 Jev 火了，我用它做了个读聊天记录的工具",
+    "date": "2026-09-23",
+    "slug": "jev-chat-analyzer",
+    "tags": [
+      "ai-engineering",
+      "tools",
+      "tutorial"
+    ],
+    "description": "用 Jev 分析中文聊天记录：意图与情绪的两级路由、低置信度降级、双模型分工，以及接入与版本管理中的实践经验。",
+    "cover": "/img/blog-covers/JevChatAnalyzer-cover.png"
+  },
+  {
+    "title": "两天 10 万 Star，DeepSeek 悄悄开源了一个比模型还重要的东西",
+    "date": "2026-08-17",
+    "slug": "deepseek-harness",
+    "tags": [
+      "ai-engineering",
+      "tools"
+    ],
+    "description": "从 Model 与 Harness 的分工讲起，介绍 DeepSeek Harness 的插件架构、运行方式，以及文件引用、界面增强、浏览器操作、记忆与多智能体等十款插件。",
+    "cover": "/img/blog-covers/DeepSeekHarness-cover.png"
+  },
+  {
     "title": "PromptOps：为什么你的 RAG Prompt 需要工程化质量保障",
     "date": "2026-07-29",
     "slug": "promptops",

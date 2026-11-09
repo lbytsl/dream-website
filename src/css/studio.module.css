@@ -1,0 +1,36 @@
+/* 展示页共用语义色与交互规范，文章及文档保持各自样式。 */
+.page {
+  --studio-bg: #f8f9fb;
+  --studio-surface: #eef1f5;
+  --studio-card: #ffffff;
+  --studio-ink: #182433;
+  --studio-muted: #536378;
+  --studio-line: #d0d9e4;
+  --studio-accent: #285eb4;
+  --studio-gutter: clamp(1.25rem, 5vw, 5rem);
+  background: var(--studio-bg);
+  color: var(--studio-ink);
+  overflow-wrap: anywhere;
+}
+:global([data-theme="dark"]) .page {
+  --studio-bg: #0d1219;
+  --studio-surface: #151d28;
+  --studio-card: #1a2431;
+  --studio-ink: #edf2f9;
+  --studio-muted: #afbdcf;
+  --studio-line: #344254;
+  --studio-accent: #9abfff;
+}
+.page :is(h1, h2, h3) { letter-spacing: -.03em; text-wrap: balance; }
+/* 基础字号保持低优先级，让页面的小屏排版与局部标题可以覆盖。 */
+:where(.page) h1 { font-size: clamp(2.8rem, 5.6vw, 5.5rem); line-height: 1.16; }
+:where(.page) h2 { font-size: clamp(1.9rem, 3.4vw, 3.25rem); line-height: 1.25; }
+:where(.page) h3 { line-height: 1.4; }
+.page p { line-height: 1.8; }
+.page ::selection { color: var(--studio-bg); background: var(--studio-accent); }
+.page :is(a, button) { text-underline-offset: .25em; -webkit-tap-highlight-color: transparent; }
+.page :is(a, button):focus-visible { outline: 2px solid var(--studio-accent); outline-offset: 5px; }
+.page button { font: inherit; }
+@media (prefers-reduced-motion: reduce) {
+  .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
