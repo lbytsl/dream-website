@@ -2,6 +2,16 @@
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
+## 知识库系列博文
+
+“文章”页左侧目录先按年份分组；每个年份内，十篇专题与一篇总论收在可折叠的“知识库”节点下，其他文章与该节点并列。
+
+- 正文放在 `blog/KnowledgeBase/{序号-主题}/index.md`，使用 `knowledge-base/{序号-主题}` 作为 slug。
+- 博文侧栏复用 Skills 页的分类组件，手机端通过导航菜单展开，进入专题时自动展开并高亮当前文章。
+- 总论提供完整系列目录，各专题保留上一／下一篇入口；图表与导出文件随文章存放在 `blog/KnowledgeBase/assets/`。
+- 每篇提供“动手应用”快捷入口，案例写明教学输入、处理轨迹、预期输出及验收条件；图在正文内嵌展示，同时保留 SVG／PNG 原图入口。
+- `scripts/build-stats.js` 递归统计系列正文，避免把分类和资源目录误计为文章。
+
 ## Installation
 
 ```bash

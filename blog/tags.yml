@@ -13,6 +13,11 @@ rag:
   permalink: /rag
   description: 检索增强生成相关文章
 
+knowledge-base:
+  label: 知识库
+  permalink: /knowledge-base
+  description: 知识组织、检索推理与企业知识库架构研究
+
 tools:
   label: Tools
   permalink: /tools

@@ -1,0 +1,73 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: calc(100vw - 48px);
+  height: calc(100dvh - 48px);
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  margin: auto;
+  border: 1px solid var(--ai-border, #e2e8f0);
+  border-radius: 12px;
+  /* 主题的 --ifm-background-color 为 transparent，弹窗使用不透明的页面底色。 */
+  background: var(--ai-bg-primary, #f8fafc);
+  color: var(--ai-text-primary, #0f172a);
+  font: inherit;
+  overflow: hidden;
+}
+
+.dialog[open] { display: flex; flex-direction: column; }
+.dialog::backdrop { background: rgb(0 0 0 / 78%); }
+.header { display: flex; align-items: center; gap: 16px; padding: 12px 16px 4px; }
+.title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dialog button, .toolbar a {
+  min-height: 44px;
+  padding: 6px 14px;
+  border: 1px solid var(--ai-border, #e2e8f0);
+  border-radius: 6px;
+  background: var(--ai-bg-secondary, #f1f5f9);
+  color: var(--ai-text-primary, #0f172a);
+  font: inherit;
+  cursor: pointer;
+}
+.dialog button:hover, .toolbar a:hover { background: var(--ai-border, #e2e8f0); text-decoration: none; }
+.dialog button:disabled { opacity: 0.45; cursor: default; }
+.dialog :focus-visible, .imageButton:focus-visible, .diagram button:focus-visible { outline: 2px solid var(--ifm-color-primary); outline-offset: 3px; }
+.close { flex: none; }
+.toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 8px 16px; }
+.toolbar output { min-width: 56px; text-align: center; font-variant-numeric: tabular-nums; }
+.toolbar a { display: inline-flex; align-items: center; }
+.help { margin: 0; padding: 0 16px 12px; font-size: 0.875rem; color: var(--ai-text-secondary, #475569); }
+.viewport { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; cursor: grab; touch-action: pan-x pan-y; }
+.dragging { cursor: grabbing; user-select: none; }
+.surface { width: max-content; min-width: 100%; min-height: 100%; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
+.surface img { display: block; max-width: none; max-height: none; flex: none; user-select: none; }
+.error { padding: 24px; }
+.imageFrame { display: inline-block; max-width: 100%; vertical-align: middle; }
+.imageButton { display: block; position: relative; max-width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.imageButton img { display: block; margin: 0; }
+.imageHint { position: absolute; right: 8px; bottom: 8px; padding: 3px 9px; border-radius: 4px; background: rgb(15 30 45 / 85%); color: #fff; font-size: 0.8125rem; line-height: 1.6; }
+.diagram { margin-block: 1.5rem; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 6px; overflow: hidden; }
+.diagramBar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 12px; border-bottom: 1px solid var(--ifm-color-emphasis-300); font-size: 0.875rem; }
+.diagramBar span { color: var(--ifm-color-emphasis-700); }
+.diagramBar button { flex: none; min-height: 44px; padding: 6px 12px; border: 0; border-radius: 4px; background: none; color: var(--ifm-color-primary); font: inherit; cursor: zoom-in; }
+.diagramBar button:hover { background: var(--ifm-color-emphasis-200); }
+.diagramViewport { max-height: 38rem; overflow: auto; overscroll-behavior: contain; padding: 16px; cursor: zoom-in; }
+.diagramViewport :global(svg) { display: block; width: var(--diagram-width, 100%); max-width: none !important; height: auto; margin-inline: auto; }
+
+@media (max-width: 600px) {
+  .dialog { width: 100vw; height: 100dvh; border: 0; border-radius: 0; }
+  .header { padding: 8px 12px 4px; }
+  .toolbar { gap: 6px; padding: 6px 12px; }
+  .dialog button, .toolbar a { padding-inline: 10px; }
+  .help { padding: 0 12px 10px; font-size: 0.8125rem; }
+  .diagramViewport { max-height: 32rem; padding: 12px; }
+  .diagramBar { padding-inline: 8px; }
+}
+
+@media print {
+  .imageHint, .diagramBar, .dialog { display: none !important; }
+  .diagram { border: 0; }
+  .diagramViewport { max-height: none; overflow: visible; padding: 0; }
+  .diagramViewport :global(svg) { width: 100%; max-width: 100% !important; }
+}

@@ -73,6 +73,9 @@ const config: Config = {
           rehypePlugins: [rehypeKatex],
         },
         blog: {
+          // 显示完整目录，避免知识库系列被默认的最近文章数量截断。
+          blogSidebarCount: "ALL",
+          blogSidebarTitle: "文章目录",
           showReadingTime: true,
           readingTime: ({ content, locale, defaultReadingTime }) =>
             defaultReadingTime({ content, locale, options: { wordsPerMinute: 300 } }),

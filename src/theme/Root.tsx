@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "@docusaurus/router";
 import SiteMotion from "@site/src/components/motion/SiteMotion";
+import ArticleMediaViewer from "@site/src/components/ArticleMediaViewer";
 
 declare global {
   interface Window {
@@ -27,8 +28,10 @@ function BaiduSpaTracker(): null {
 export default function Root({ children }: { children: React.ReactNode }): React.ReactNode {
   return (
     <SiteMotion>
-      <BaiduSpaTracker />
-      {children}
+      <ArticleMediaViewer>
+        <BaiduSpaTracker />
+        {children}
+      </ArticleMediaViewer>
     </SiteMotion>
   );
 }

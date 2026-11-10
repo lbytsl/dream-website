@@ -57,11 +57,14 @@ function countSkillEntries(dir) {
   return count;
 }
 
-function countDirs(dir) {
-  if (!fs.existsSync(dir)) return 0;
-  return fs
-    .readdirSync(dir, { withFileTypes: true })
-    .filter((e) => e.isDirectory()).length;
+// 系列文章允许嵌套目录；只收集正文，资源文件夹不计为文章。
+function collectBlogFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) return collectBlogFiles(fullPath);
+    return /\.mdx?$/.test(entry.name) ? [fullPath] : [];
+  });
 }
 
 function parseFrontmatter(content) {
@@ -92,24 +95,18 @@ function parseFrontmatter(content) {
 
 function parseBlogPosts(blogDir) {
   if (!fs.existsSync(blogDir)) return [];
-  const dirs = fs
-    .readdirSync(blogDir, { withFileTypes: true })
-    .filter((e) => e.isDirectory())
-    .map((e) => e.name);
-
   const IMAGE_EXTS = [".png", ".jpg", ".jpeg", ".webp", ".gif"];
 
   const posts = [];
-  for (const dir of dirs) {
-    const indexPath = path.join(blogDir, dir, "index.md");
-    if (!fs.existsSync(indexPath)) continue;
+  for (const indexPath of collectBlogFiles(blogDir)) {
+    const dirPath = path.dirname(indexPath);
+    const dir = path.relative(blogDir, dirPath).split(path.sep).join("-");
     const content = fs.readFileSync(indexPath, "utf-8");
     const fm = parseFrontmatter(content);
-    if (!fm.title || !fm.date) continue;
+    if (!fm.title || !fm.date || fm.draft === "true") continue;
 
     // 查找博客目录内的第一张图片作为封面，复制到 static 目录
     let cover = "";
-    const dirPath = path.join(blogDir, dir);
     const files = fs.readdirSync(dirPath);
     const coversDir = path.join(root, "static", "img", "blog-covers");
     for (const f of files) {
@@ -135,20 +132,21 @@ function parseBlogPosts(blogDir) {
     });
   }
 
-  // 按日期倒序排列，取最近 3 篇
+  // 保留完整文章数，再由首页取最近三篇。
   posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  return posts.slice(0, 3);
+  return posts;
 }
 
 const root = path.resolve(__dirname, "..");
+const blogPosts = parseBlogPosts(path.join(root, "blog"));
 
 const stats = {
-  articles: countDirs(path.join(root, "blog")),
+  articles: blogPosts.length,
   prompts: countPromptEntries(path.join(root, "docs", "prompt")),
   skills: countSkillEntries(path.join(root, "docs", "skills")),
 };
 
-const recentPosts = parseBlogPosts(path.join(root, "blog"));
+const recentPosts = blogPosts.slice(0, 3);
 
 const outDir = path.join(root, "src", "data");
 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
