@@ -250,7 +250,7 @@ export default function AnimatedHome(): React.ReactNode {
 
         <section className={styles.latest}>
           <div className={styles.latestVisual}>
-            <img src={latest.cover} alt={`${latest.title}文章封面`} width="1923" height="818" loading="lazy" />
+            <img src={latest.cover} alt={`${latest.title}文章封面`} width="1792" height="768" loading="lazy" />
           </div>
           <div className={styles.latestCopy}>
             <h2>{latest.title}</h2>

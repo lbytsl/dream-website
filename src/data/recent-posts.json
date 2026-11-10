@@ -1,15 +1,25 @@
 [
   {
-    "title": "从一次对话到可靠应用：Dream Agents 的 AI 智能体实践",
-    "date": "2026-11-09",
-    "slug": "dream-agents-practice",
+    "title": "Agent 任务查得清：六类记录（上篇）",
+    "date": "2026-11-10",
+    "slug": "dream-agents-part1",
     "tags": [
       "ai-engineering",
-      "rag",
+      "rag"
+    ],
+    "description": "企业落地一个能动手的 Agent，先过六个位置：任务身份、权限下沉、检索证据、写工具的未知结果、审批状态与流完整性。",
+    "cover": "/img/blog-covers/DreamAgentsPart1-cover.png"
+  },
+  {
+    "title": "上下文预算与评测：边界划在哪（下篇）",
+    "date": "2026-11-10",
+    "slug": "dream-agents-part2",
+    "tags": [
+      "ai-engineering",
       "tutorial"
     ],
-    "description": "结合 Dream Agents 开发记忆与源码，用七张信息图讲述从教程到智能体应用的演进，深入运行治理、RAG 证据、工具未知结果、流完整性、上下文预算与历史编辑。",
-    "cover": "/img/blog-covers/DreamAgents-cover.png"
+    "description": "工具与技能的分工、上下文预算的算法、画像与历史编辑的时间线、三种评测模式各能证明什么，最后是分阶段交出自自主权的顺序。",
+    "cover": "/img/blog-covers/DreamAgentsPart2-cover.png"
   },
   {
     "title": "那个「不生成文字」的 Jev 火了，我用它做了个读聊天记录的工具",
