@@ -1,6 +1,6 @@
 ---
 slug: 18-docs-mcp
-title: Codex 18｜用文档 MCP 核实一个命令，而不是猜参数
+title: Codex 12｜用文档 MCP 核实一个命令，而不是猜参数
 authors: [lbytsl]
 tags: [codex-tips, tools]
 date: 2026-11-25
@@ -54,6 +54,6 @@ codex exec --help
 ## 延伸阅读与相关技巧
 
 - [OpenAI：文档 MCP 的用途和配置](https://developers.openai.com/learn/docs-mcp)；[非交互模式及输出格式](https://learn.chatgpt.com/docs/non-interactive-mode)。
-- [14 · 最小权限调查](/blog/codex-tips/14-read-only) 划清信息边界；[19 · 用 JSON Schema 交接](/blog/codex-tips/19-structured-handoff) 实际消费最终答复。
+- [09 · 最小权限调查](/blog/codex-tips/14-read-only) 划清信息边界；[13 · 用 JSON Schema 交接](/blog/codex-tips/19-structured-handoff) 实际消费最终答复。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

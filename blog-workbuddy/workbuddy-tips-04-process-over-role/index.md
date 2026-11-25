@@ -1,13 +1,13 @@
 ---
 slug: 04-process-over-role
-title: 技巧 04：流程比角色更重要——别再堆砌「你是一个专家」
+title: 技巧 03：流程比角色更重要——别再堆砌「你是一个专家」
 authors: [lbytsl]
 tags: [workbuddy-tips, prompt-engineering, tutorial]
 date: 2026-11-09
 description: 角色设定只能改变语气，流程和判断标准才能改变行为。用可执行步骤替代「资深专家」这类空话。
 ---
 
-# 技巧 04：流程比角色更重要——别再堆砌「你是一个专家」
+# 技巧 03：流程比角色更重要——别再堆砌「你是一个专家」
 
 > 一句话概括：告诉 AI「按哪五步做」远比告诉它「你是世界顶级专家」有效——行为来自流程，不来自头衔。
 
@@ -118,5 +118,5 @@ description: 角色设定只能改变语气，流程和判断标准才能改变�
 ## 七、延伸阅读或相关技巧
 
 - [通用 01 · 先写验收标准](/blog/general-tips/01-acceptance-criteria) —— 流程最后一步的验证从哪来
-- [技巧 14：读懂 Skill 的 description](/blog/workbuddy-tips/14-skill-trigger) —— Skill 本质就是被固化下来的流程
-- [技巧 15：从零创建你的第一个 Skill](/blog/workbuddy-tips/15-first-skill) —— 把好流程沉淀成可复用能力
+- [技巧 09：读懂 Skill 的 description](/blog/workbuddy-tips/14-skill-trigger) —— Skill 本质就是被固化下来的流程
+- [技巧 10：从零创建你的第一个 Skill](/blog/workbuddy-tips/15-first-skill) —— 把好流程沉淀成可复用能力

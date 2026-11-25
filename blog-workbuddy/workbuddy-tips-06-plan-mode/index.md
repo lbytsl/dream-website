@@ -1,13 +1,13 @@
 ---
 slug: 06-plan-mode
-title: 技巧 06：用 Plan 模式把复杂需求变成可执行清单
+title: 技巧 05：用 Plan 模式把复杂需求变成可执行清单
 authors: [lbytsl]
 tags: [workbuddy-tips, tutorial]
 date: 2026-11-11
 description: 掌握 Plan 模式的只读分析机制，用追问把方案打磨到可执行再动手，避免复杂任务改到一半推倒重来。
 ---
 
-# 技巧 06：用 Plan 模式把复杂需求变成可执行清单
+# 技巧 05：用 Plan 模式把复杂需求变成可执行清单
 
 > 一句话概括：让 AI 先只许看、不许改，把方案写成带文件和验证方式的清单，你点头之后再落地。
 
@@ -21,7 +21,7 @@ description: 掌握 Plan 模式的只读分析机制，用追问把方案打磨�
 
 **一句话概括**：Plan 模式通过只读操作分析代码库并生成计划，把「边做边想」变成「想清楚再做」。
 
-它是[技巧 05 三种模式](/blog/workbuddy-tips/05-modes)里 Plan 那一档的深度用法。
+它是[技巧 04 三种模式](/blog/workbuddy-tips/05-modes)里 Plan 那一档的深度用法。
 
 ## 二、核心原理与适用场景
 
@@ -125,6 +125,6 @@ Plan 模式的价值就在这两轮追问里——**在写第一行代码之前�
 
 ## 七、延伸阅读或相关技巧
 
-- [技巧 05：Ask / Plan / Craft 怎么选](/blog/workbuddy-tips/05-modes) —— 什么时候该进 Plan 模式
+- [技巧 04：Ask / Plan / Craft 怎么选](/blog/workbuddy-tips/05-modes) —— 什么时候该进 Plan 模式
 - [通用 03 · 可验证的任务切片](/blog/general-tips/03-verifiable-slices) —— 计划落地时如何分片
-- [技巧 11：让子代理去翻代码](/blog/workbuddy-tips/11-subagent) —— 规划阶段保持主上下文干净的技巧
+- [技巧 07：让子代理去翻代码](/blog/workbuddy-tips/11-subagent) —— 规划阶段保持主上下文干净的技巧

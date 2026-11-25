@@ -1,6 +1,6 @@
 ---
 slug: 11-api-contract
-title: Codex 11｜改接口字段前，先找到还在读它的人
+title: Codex 07｜改接口字段前，先找到还在读它的人
 authors: [lbytsl]
 tags: [codex-tips, ai-engineering]
 date: 2026-11-25
@@ -56,6 +56,6 @@ assert.equal(byline({}), '匿名');
 ## 延伸阅读与相关技巧
 
 - [通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context) 适合盘点谁在读老字段。
-- [12 · 先锁定行为再重构](/blog/codex-tips/12-behavior-lock)：兼容是要有意保留的行为，不应在整理代码时消失。
+- [08 · 先锁定行为再重构](/blog/codex-tips/12-behavior-lock)：兼容是要有意保留的行为，不应在整理代码时消失。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

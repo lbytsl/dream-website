@@ -30,7 +30,7 @@ WorkBuddy 和 CodeBuddy Code 都支持在输入框中用 `@` 引用上下文：
 - **`@` 单个文件**：文件内容会被加入对话。小文件直接注入，大文件会保留引用并提示后续按需读取。
 - **`@` 目录**：提供目录列表和文件信息，**不包含文件内容**，适合让 AI 先了解结构。
 - **WorkBuddy 另外支持**：拖拽文件到输入框、`Ctrl/Cmd + V` 粘贴截图、创建任务时 `@` 引用文件/文档/规则。
-- **CodeBuddy Code 额外行为**：`@file` 会自动把该文件目录及父目录中的 `CODEBUDDY.md` 一并带入上下文（详见[技巧 10](/blog/workbuddy-tips/10-codebuddy-md)）。
+- **CodeBuddy Code 额外行为**：`@file` 会自动把该文件目录及父目录中的 `CODEBUDDY.md` 一并带入上下文（详见[技巧 06](/blog/workbuddy-tips/10-codebuddy-md)）。
 
 原理很简单：AI 的上下文窗口是有限资源。你直接给出文件，它就不需要用多轮工具调用去扫描目录、打开错误的文件、再回头纠正。**精准引用同时提升了准确率和速度，还省下 token。**
 
@@ -106,4 +106,4 @@ WorkBuddy 和 CodeBuddy Code 都支持在输入框中用 `@` 引用上下文：
 
 - [技巧 01：任务描述四要素](/blog/workbuddy-tips/01-task-brief) —— `@` 引用是「输入」要素的实现手段
 - [通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context) —— 为什么精准引用同时提升速度和准确率
-- [技巧 10：把项目规范写进 CODEBUDDY.md](/blog/workbuddy-tips/10-codebuddy-md) —— 那些不需要每次 `@` 的长期上下文
+- [技巧 06：把项目规范写进 CODEBUDDY.md](/blog/workbuddy-tips/10-codebuddy-md) —— 那些不需要每次 `@` 的长期上下文

@@ -1,6 +1,6 @@
 ---
 slug: 05-agents-md
-title: Codex 05｜用 AGENTS.md 留住仓库里的约定
+title: Codex 02｜用 AGENTS.md 留住仓库里的约定
 authors: [lbytsl]
 tags: [codex-tips, tools]
 date: 2026-11-25
@@ -67,7 +67,7 @@ test('空搜索不列出文章', () => {
 ## 延伸阅读与相关技巧
 
 - [OpenAI：Codex 如何发现 AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)。
-- [14 · 只读权限调查](/blog/codex-tips/14-read-only)：想阻止命令写文件，靠的不是团队约定，而是工具权限。
-- [16 · 把工作流程做成 Skill](/blog/codex-tips/16-first-skill)：只在特定任务才需要的一整套步骤，不必塞进每次都读的规则里。
+- [09 · 只读权限调查](/blog/codex-tips/14-read-only)：想阻止命令写文件，靠的不是团队约定，而是工具权限。
+- [10 · 把工作流程做成 Skill](/blog/codex-tips/16-first-skill)：只在特定任务才需要的一整套步骤，不必塞进每次都读的规则里。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

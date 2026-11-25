@@ -1,13 +1,13 @@
 ---
 slug: 12-resume-rewind
-title: 技巧 12：检查点与会话恢复——放手试错的安全网
+title: 技巧 08：检查点与会话恢复——放手试错的安全网
 authors: [lbytsl]
 tags: [workbuddy-tips, tutorial]
 date: 2026-11-17
 description: 用 /rewind 回退代码与对话、用 --continue 和 --resume 接续会话，让大胆尝试有后悔药。
 ---
 
-# 技巧 12：检查点与会话恢复——放手试错的安全网
+# 技巧 08：检查点与会话恢复——放手试错的安全网
 
 > 一句话概括：AI 每次编辑前都会自动留检查点，改错了可以只回退代码、只回退对话，或两者一起回退。
 
@@ -140,4 +140,4 @@ codebuddy --continue
 
 - [通用 03 · 可验证的任务切片](/blog/general-tips/03-verifiable-slices) —— 切片提交与检查点配合
 - [通用 06 · Git 工作树隔离](/blog/general-tips/06-isolated-worktrees) —— 多会话并行的隔离手段
-- [技巧 20：代码审查流水线](/blog/workbuddy-tips/20-review-pipeline) —— 审查也能借助全新上下文
+- [技巧 14：代码审查流水线](/blog/workbuddy-tips/20-review-pipeline) —— 审查也能借助全新上下文

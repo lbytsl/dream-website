@@ -1,6 +1,6 @@
 ---
 slug: 08-red-green-test
-title: Codex 08｜让回归测试先红一次，再相信它变绿
+title: Codex 04｜让回归测试先红一次，再相信它变绿
 authors: [lbytsl]
 tags: [codex-tips, tutorial]
 date: 2026-11-25
@@ -62,8 +62,8 @@ test('新收藏排在已有条目之后', () => {
 
 ## 延伸阅读与相关技巧
 
-- [03 · 用样例表确定期望](/blog/codex-tips/03-example-contract) 帮你决定测试该断言什么。
-- [12 · 用行为测试保护重构](/blog/codex-tips/12-behavior-lock)：下一步不是改规则，而是在规则不变时改结构。
+- [01 · 用样例表确定期望](/blog/codex-tips/03-example-contract) 帮你决定测试该断言什么。
+- [08 · 用行为测试保护重构](/blog/codex-tips/12-behavior-lock)：下一步不是改规则，而是在规则不变时改结构。
 - [Skills 知识库：测试驱动开发](/docs/skills/engineering/tdd) 展示怎样在其他任务里复用这个循环。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

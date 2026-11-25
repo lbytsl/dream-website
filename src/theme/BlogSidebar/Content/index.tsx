@@ -25,10 +25,12 @@ function createCategory(
     items: [...items]
       .sort((left, right) => left.permalink.localeCompare(right.permalink))
       .map(({ permalink, title }) => {
-        const order = permalink.match(/\/(\d{2})-/)?.[1];
+        // A lesson's display number can change without invalidating its public URL.
+        const numberedTitle = title.match(/^(?:Codex|技巧)\s+(\d{2})[｜：]\s*(.*)$/);
+        const order = numberedTitle?.[1] ?? permalink.match(/\/(\d{2})-/)?.[1];
         const shortTitle = slug === "knowledge-base"
           ? (permalink.endsWith("/11-overview") ? "总论与架构选型" : title.split("：")[0])
-          : title.replace(/^(?:Codex\s+\d{2}｜|技巧\s+\d{2}：)/, "");
+          : (numberedTitle?.[2] ?? title);
         return {
           type: "link",
           label: order ? `${order} · ${shortTitle}` : shortTitle,

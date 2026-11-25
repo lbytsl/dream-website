@@ -1,6 +1,6 @@
 ---
 slug: 20-reader-smoke-test
-title: Codex 20｜从栏目入口点进正文，才算完成交付
+title: Codex 14｜从栏目入口点进正文，才算完成交付
 authors: [lbytsl]
 tags: [codex-tips, tutorial]
 date: 2026-11-25
@@ -75,6 +75,6 @@ test('读者能从文章页打开第一课', async ({ page }) => {
 ## 延伸阅读与相关技巧
 
 - 回到 [通用 01 · 先写验收标准](/blog/general-tips/01-acceptance-criteria)：现在你可以把「读者从哪里开始、最后看到什么」写进下一次需求。
-- 用 [通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review) 核对修复，再用 [19 · 结构化交接](/blog/codex-tips/19-structured-handoff) 区分本地通过和线上未验。
+- 用 [通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review) 核对修复，再用 [13 · 结构化交接](/blog/codex-tips/19-structured-handoff) 区分本地通过和线上未验。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

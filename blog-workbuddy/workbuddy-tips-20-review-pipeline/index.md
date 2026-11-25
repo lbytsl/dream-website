@@ -1,13 +1,13 @@
 ---
 slug: 20-review-pipeline
-title: 技巧 20：把审查变成流水线——Skill + 子代理 + CI 门禁
+title: 技巧 14：把审查变成流水线——Skill + 子代理 + CI 门禁
 authors: [lbytsl]
 tags: [workbuddy-tips, tools, tutorial]
 date: 2026-11-25
 description: 把结构化审查提示词固化成 Skill，用独立上下文审查，再用 CI 中的一次性模式做门禁——系列收官实战。
 ---
 
-# 技巧 20：把审查变成流水线——Skill + 子代理 + CI 门禁
+# 技巧 14：把审查变成流水线——Skill + 子代理 + CI 门禁
 
 > 一句话概括：把前面的审查、Skill 和自动化方法串起来——审查清单做成 Skill，交给独立上下文执行，最后用 CI 里的 `codebuddy -p` 卡住不合格的改动。
 
@@ -19,7 +19,7 @@ description: 把结构化审查提示词固化成 Skill，用独立上下文审�
 
 **一句话概括**：把一次性审查提示词固化为可复用 Skill，用隔离上下文保证客观，再接入 CI 让「严重问题不合并」成为自动执行的规则。
 
-这是本系列的收官篇：它综合了[通用 01 · 先写验收标准](/blog/general-tips/01-acceptance-criteria)、[通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review)、[技巧 15 创建 Skill](/blog/workbuddy-tips/15-first-skill)、[技巧 17 context: fork](/blog/workbuddy-tips/17-skill-fork)和[技巧 19 命令行管道](/blog/workbuddy-tips/19-log-pipeline)。
+这是本系列的收官篇：它综合了[通用 01 · 先写验收标准](/blog/general-tips/01-acceptance-criteria)、[通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review)、[技巧 10 创建 Skill](/blog/workbuddy-tips/15-first-skill)、[技巧 12 context: fork](/blog/workbuddy-tips/17-skill-fork)和[技巧 13 命令行管道](/blog/workbuddy-tips/19-log-pipeline)。
 
 ## 二、核心原理与适用场景
 
@@ -30,8 +30,8 @@ description: 把结构化审查提示词固化成 Skill，用独立上下文审�
 | 层级 | 载体 | 解决什么 |
 |------|------|---------|
 | 规范层 | 结构化审查提示词（通用 07） | 审查什么、怎么分级、怎么回报 |
-| 复用层 | Skill（技巧 15、16、17） | 一句话触发、权限可控、上下文隔离 |
-| 执行层 | CI 中的 `codebuddy -p`（技巧 19） | 每次提交自动跑，结果可解析 |
+| 复用层 | Skill（技巧 10、11、12） | 一句话触发、权限可控、上下文隔离 |
+| 执行层 | CI 中的 `codebuddy -p`（技巧 13） | 每次提交自动跑，结果可解析 |
 
 **适用场景**：团队协作、需要稳定代码质量门禁、审查意见总是靠「想起来才做」的项目。
 
@@ -61,7 +61,7 @@ codebuddy -p "Review the changes"
 
 **第一层：固化审查 Skill**
 
-在 `.codebuddy/skills/pr-review/SKILL.md` 里写下[通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review)的清单和[技巧 15](/blog/workbuddy-tips/15-first-skill)的结构，权限按[技巧 16](/blog/workbuddy-tips/16-skill-permission)收紧：
+在 `.codebuddy/skills/pr-review/SKILL.md` 里写下[通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review)的清单和[技巧 10](/blog/workbuddy-tips/15-first-skill)的结构，权限按[技巧 11](/blog/workbuddy-tips/16-skill-permission)收紧：
 
 ```yaml
 ---
@@ -81,7 +81,7 @@ allowed-tools: Read, Grep, Bash(git:status,git:diff,git:log)
 只报告，不修改代码。
 ```
 
-`context: fork` 让审查在独立上下文里进行——审查者没写过这段代码，偏见更少（呼应[通用 06 · Git 工作树隔离](/blog/general-tips/06-isolated-worktrees)和[技巧 11 子代理](/blog/workbuddy-tips/11-subagent)）。
+`context: fork` 让审查在独立上下文里进行——审查者没写过这段代码，偏见更少（呼应[通用 06 · Git 工作树隔离](/blog/general-tips/06-isolated-worktrees)和[技巧 07 子代理](/blog/workbuddy-tips/11-subagent)）。
 
 **第二层：本地日常使用**
 
@@ -169,11 +169,11 @@ try {
 
 | 阶段 | 技巧 | 核心解决什么 |
 |------|------|-------------|
-| 入门·提示词 | [01 四要素](/blog/workbuddy-tips/01-task-brief) · [02 @ 引用](/blog/workbuddy-tips/02-at-reference) · [通用 01 · 先写验收标准](/blog/general-tips/01-acceptance-criteria) · [04 流程优于角色](/blog/workbuddy-tips/04-process-over-role) | 把话说清楚，让 AI 不用猜 |
-| 入门·任务拆解 | [05 模式选择](/blog/workbuddy-tips/05-modes) · [06 Plan 模式](/blog/workbuddy-tips/06-plan-mode) · [通用 03 · 可验证的任务切片](/blog/general-tips/03-verifiable-slices) · [通用 06 · Git 工作树隔离](/blog/general-tips/06-isolated-worktrees) | 控制改动范围，可回退可并行 |
-| 进阶·上下文 | [通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context) · [10 CODEBUDDY.md](/blog/workbuddy-tips/10-codebuddy-md) · [11 子代理](/blog/workbuddy-tips/11-subagent) · [12 检查点恢复](/blog/workbuddy-tips/12-resume-rewind) | 让有限上下文花在刀刃上 |
-| 进阶·Skills | [14 触发机制](/blog/workbuddy-tips/14-skill-trigger) · [15 第一个 Skill](/blog/workbuddy-tips/15-first-skill) · [16 权限最小化](/blog/workbuddy-tips/16-skill-permission) · [17 context fork](/blog/workbuddy-tips/17-skill-fork) | 把好流程沉淀成可复用能力 |
-| 实战·调试审查 | [通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review) · [通用 05 · 最小复现](/blog/general-tips/05-minimal-repro) · [19 日志管道](/blog/workbuddy-tips/19-log-pipeline) · [20 审查流水线](/blog/workbuddy-tips/20-review-pipeline) | 定位问题，并把质量变成机制 |
+| 入门·提示词 | [01 四要素](/blog/workbuddy-tips/01-task-brief) · [02 @ 引用](/blog/workbuddy-tips/02-at-reference) · [通用 01 · 先写验收标准](/blog/general-tips/01-acceptance-criteria) · [03 流程优于角色](/blog/workbuddy-tips/04-process-over-role) | 把话说清楚，让 AI 不用猜 |
+| 入门·任务拆解 | [04 模式选择](/blog/workbuddy-tips/05-modes) · [05 Plan 模式](/blog/workbuddy-tips/06-plan-mode) · [通用 03 · 可验证的任务切片](/blog/general-tips/03-verifiable-slices) · [通用 06 · Git 工作树隔离](/blog/general-tips/06-isolated-worktrees) | 控制改动范围，可回退可并行 |
+| 进阶·上下文 | [通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context) · [06 CODEBUDDY.md](/blog/workbuddy-tips/10-codebuddy-md) · [07 子代理](/blog/workbuddy-tips/11-subagent) · [08 检查点恢复](/blog/workbuddy-tips/12-resume-rewind) | 让有限上下文花在刀刃上 |
+| 进阶·Skills | [09 触发机制](/blog/workbuddy-tips/14-skill-trigger) · [10 第一个 Skill](/blog/workbuddy-tips/15-first-skill) · [11 权限最小化](/blog/workbuddy-tips/16-skill-permission) · [12 context fork](/blog/workbuddy-tips/17-skill-fork) | 把好流程沉淀成可复用能力 |
+| 实战·调试审查 | [通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review) · [通用 05 · 最小复现](/blog/general-tips/05-minimal-repro) · [13 日志管道](/blog/workbuddy-tips/19-log-pipeline) · [14 审查流水线](/blog/workbuddy-tips/20-review-pipeline) | 定位问题，并把质量变成机制 |
 
 **一条主线**：先把需求说清，再控制执行范围和上下文，最后用 Skills 与流水线固定可重复的验证步骤。
 

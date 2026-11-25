@@ -1,6 +1,6 @@
 ---
 slug: 17-skill-script
-title: Codex 17｜给 Skill 配一个能判定重复 ID 的脚本
+title: Codex 11｜给 Skill 配一个能判定重复 ID 的脚本
 authors: [lbytsl]
 tags: [codex-tips, ai-engineering]
 date: 2026-11-25
@@ -28,7 +28,7 @@ image: /img/blog-covers/codex-tips.svg
 
 ## 正确做法与代码解释
 
-沿用第 16 篇的 Skill，把下面脚本放在 `.agents/skills/article-preflight/scripts/check-ids.mjs`：
+沿用[第 10 篇的 Skill](/blog/codex-tips/16-first-skill)，把下面脚本放在 `.agents/skills/article-preflight/scripts/check-ids.mjs`：
 
 ```js
 import { readFileSync } from 'node:fs';
@@ -73,7 +73,7 @@ description: 发稿前只读核对 Markdown 稿件标题与栏目，或检查 JS
 
 ## 延伸阅读与相关技巧
 
-- [16 · 从指令型 Skill 起步](/blog/codex-tips/16-first-skill)：只有确实需要确定性判定时才加脚本。
-- [19 · 把报告交给下一个程序](/blog/codex-tips/19-structured-handoff)：固定的 JSON 结果不仅供人阅读。
+- [10 · 从指令型 Skill 起步](/blog/codex-tips/16-first-skill)：只有确实需要确定性判定时才加脚本。
+- [13 · 把报告交给下一个程序](/blog/codex-tips/19-structured-handoff)：固定的 JSON 结果不仅供人阅读。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

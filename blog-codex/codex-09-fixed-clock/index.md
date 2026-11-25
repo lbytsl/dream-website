@@ -1,6 +1,6 @@
 ---
 slug: 09-fixed-clock
-title: Codex 09｜把「现在」传进函数，让定时发布测试不再碰运气
+title: Codex 05｜把「现在」传进函数，让定时发布测试不再碰运气
 authors: [lbytsl]
 tags: [codex-tips, tutorial]
 date: 2026-11-25
@@ -56,7 +56,7 @@ for (const [delta, want] of [[-1, false], [0, true], [1, true]]) {
 
 ## 延伸阅读与相关技巧
 
-- [03 · 用表覆盖边界值](/blog/codex-tips/03-example-contract) 解释为什么刚好到点最值得测。
-- [08 · 先看到预期的红灯](/blog/codex-tips/08-red-green-test) 用于确认等号确实被用例保护。
+- [01 · 用表覆盖边界值](/blog/codex-tips/03-example-contract) 解释为什么刚好到点最值得测。
+- [04 · 先看到预期的红灯](/blog/codex-tips/08-red-green-test) 用于确认等号确实被用例保护。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

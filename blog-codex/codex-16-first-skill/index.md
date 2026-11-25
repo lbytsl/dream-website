@@ -1,6 +1,6 @@
 ---
 slug: 16-first-skill
-title: Codex 16｜把发稿检查写成第一个 Codex Skill
+title: Codex 10｜把发稿检查写成第一个 Codex Skill
 authors: [lbytsl]
 tags: [codex-tips, tools]
 date: 2026-11-25
@@ -63,6 +63,6 @@ description: 发稿前只读核对指定 Markdown 稿件的标题与栏目；不
 ## 延伸阅读与相关技巧
 
 - [OpenAI：创建和发现 Skills](https://learn.chatgpt.com/docs/build-skills)。
-- [05 · 区分长期仓库规则](/blog/codex-tips/05-agents-md)；[17 · 把机械判定交给脚本](/blog/codex-tips/17-skill-script) 是这个 Skill 的下一步。
+- [02 · 区分长期仓库规则](/blog/codex-tips/05-agents-md)；[11 · 把机械判定交给脚本](/blog/codex-tips/17-skill-script) 是这个 Skill 的下一步。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

@@ -1,13 +1,13 @@
 ---
 slug: 05-modes
-title: 技巧 05：Ask / Plan / Craft——选对模式少走一半弯路
+title: 技巧 04：Ask / Plan / Craft——选对模式少走一半弯路
 authors: [lbytsl]
 tags: [workbuddy-tips, tutorial]
 date: 2026-11-10
 description: 搞懂 WorkBuddy 三种工作模式的边界：什么时候只问不改，什么时候先看计划，什么时候放心让 AI 直接动手。
 ---
 
-# 技巧 05：Ask / Plan / Craft——选对模式少走一半弯路
+# 技巧 04：Ask / Plan / Craft——选对模式少走一半弯路
 
 > 一句话概括：任务风险决定模式——探索用 Ask，复杂改动用 Plan，明确常规的活用 Craft。
 
@@ -56,7 +56,7 @@ Ask 模式只会给你一段「你应该怎么改」的说明文字。你觉得 
 （Craft 模式）把项目的鉴权系统从 Session 迁移到 JWT。
 ```
 
-AI 会立刻改十几个文件。如果中途方向错了，你要一个个回退——虽然有检查点（见[技巧 12](/blog/workbuddy-tips/12-resume-rewind)），但理清哪一步走偏更费时间。
+AI 会立刻改十几个文件。如果中途方向错了，你要一个个回退——虽然有检查点（见[技巧 08](/blog/workbuddy-tips/12-resume-rewind)），但理清哪一步走偏更费时间。
 
 **错误三：全程只用一种模式**
 
@@ -132,6 +132,6 @@ AI 会立刻改十几个文件。如果中途方向错了，你要一个个回�
 
 ## 七、延伸阅读或相关技巧
 
-- [技巧 06：用 Plan 模式把复杂需求变成清单](/blog/workbuddy-tips/06-plan-mode) —— Plan 模式的完整实操
+- [技巧 05：用 Plan 模式把复杂需求变成清单](/blog/workbuddy-tips/06-plan-mode) —— Plan 模式的完整实操
 - [通用 03 · 可验证的任务切片](/blog/general-tips/03-verifiable-slices) —— Craft 阶段如何控制单次改动范围
-- [技巧 12：检查点与会话恢复](/blog/workbuddy-tips/12-resume-rewind) —— Craft 模式的安全网
+- [技巧 08：检查点与会话恢复](/blog/workbuddy-tips/12-resume-rewind) —— Craft 模式的安全网

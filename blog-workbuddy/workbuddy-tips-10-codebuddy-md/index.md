@@ -1,13 +1,13 @@
 ---
 slug: 10-codebuddy-md
-title: 技巧 10：把项目规范写进 CODEBUDDY.md
+title: 技巧 06：把项目规范写进 CODEBUDDY.md
 authors: [lbytsl]
 tags: [workbuddy-tips, tutorial]
 date: 2026-11-15
 description: 用分层记忆文件一次性写清技术栈、编码约定和常用命令，让 AI 每次会话自动加载，不再重复交代背景。
 ---
 
-# 技巧 10：把项目规范写进 CODEBUDDY.md
+# 技巧 06：把项目规范写进 CODEBUDDY.md
 
 > 一句话概括：把每次都要重复说的项目约定写进记忆文件，让它随每次会话自动加载。
 
@@ -132,5 +132,5 @@ CodeBuddy Code 提供四种分层记忆位置，按作用范围划分：
 ## 七、延伸阅读或相关技巧
 
 - [通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context) —— 为什么持久记忆比每次重复说明更省预算
-- [技巧 11：让子代理去翻代码](/blog/workbuddy-tips/11-subagent) —— 另一类上下文隔离手段
-- [技巧 14：读懂 Skill 的 description](/blog/workbuddy-tips/14-skill-trigger) —— 记忆与 Skill 各自负责什么
+- [技巧 07：让子代理去翻代码](/blog/workbuddy-tips/11-subagent) —— 另一类上下文隔离手段
+- [技巧 09：读懂 Skill 的 description](/blog/workbuddy-tips/14-skill-trigger) —— 记忆与 Skill 各自负责什么

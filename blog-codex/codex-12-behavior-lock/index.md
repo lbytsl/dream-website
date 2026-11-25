@@ -1,6 +1,6 @@
 ---
 slug: 12-behavior-lock
-title: Codex 12｜先锁住旧行为，再请 Codex 消除重复
+title: Codex 08｜先锁住旧行为，再请 Codex 消除重复
 authors: [lbytsl]
 tags: [codex-tips, tutorial]
 date: 2026-11-25
@@ -58,8 +58,8 @@ for (const label of [tocLabel, sidebarLabel]) {
 
 ## 延伸阅读与相关技巧
 
-- [08 · 红绿测试](/blog/codex-tips/08-red-green-test) 用来验证特征测试有辨别力。
-- [05 · 把约定记入 AGENTS.md](/blog/codex-tips/05-agents-md)：如果每次整理代码都要跑同一组检查，把命令留下来。
-- [10 · 检查差异边界](/blog/codex-tips/10-bounded-diff) 帮你把「结构变了」和「行为变了」分开提交给读者检查。
+- [04 · 红绿测试](/blog/codex-tips/08-red-green-test) 用来验证特征测试有辨别力。
+- [02 · 把约定记入 AGENTS.md](/blog/codex-tips/05-agents-md)：如果每次整理代码都要跑同一组检查，把命令留下来。
+- [06 · 检查差异边界](/blog/codex-tips/10-bounded-diff) 帮你把「结构变了」和「行为变了」分开提交给读者检查。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

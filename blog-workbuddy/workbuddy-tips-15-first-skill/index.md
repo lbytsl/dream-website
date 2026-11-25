@@ -1,13 +1,13 @@
 ---
 slug: 15-first-skill
-title: 技巧 15：从零创建你的第一个 Skill
+title: 技巧 10：从零创建你的第一个 Skill
 authors: [lbytsl]
 tags: [workbuddy-tips, tools, tutorial]
 date: 2026-11-20
 description: 把一个每天重复的操作沉淀成可复用 Skill：目录放哪、SKILL.md 怎么写、如何触发，一篇讲清。
 ---
 
-# 技巧 15：从零创建你的第一个 Skill
+# 技巧 10：从零创建你的第一个 Skill
 
 > 一句话概括：把「每次都要重复说一遍的流程」写进 SKILL.md，让 AI 以后自动识别并执行。
 
@@ -23,7 +23,7 @@ description: 把一个每天重复的操作沉淀成可复用 Skill：目录放�
 
 ## 二、核心原理与适用场景
 
-Skill 的本质是「打包好的流程化提示词」——[技巧 04 讲的流程化写法](/blog/workbuddy-tips/04-process-over-role)写在对话里是一次性的，写进 `SKILL.md` 就变成了长期可复用的能力。
+Skill 的本质是「打包好的流程化提示词」——[技巧 03 讲的流程化写法](/blog/workbuddy-tips/04-process-over-role)写在对话里是一次性的，写进 `SKILL.md` 就变成了长期可复用的能力。
 
 **存放位置**：
 
@@ -135,7 +135,7 @@ allowed-tools: Read, Grep, Bash(git:diff)
 帮我 review 一下这次的改动，看看有没有安全问题。
 ```
 
-不需要输入 `/pr-review`，AI 应根据 description 自动匹配（原理见[技巧 14](/blog/workbuddy-tips/14-skill-trigger)）。
+不需要输入 `/pr-review`，AI 应根据 description 自动匹配（原理见[技巧 09](/blog/workbuddy-tips/14-skill-trigger)）。
 
 **第四步：迭代**
 
@@ -155,7 +155,7 @@ allowed-tools: Read, Grep, Bash(git:diff)
 
 - **SKILL.md 写成需求文档**：写「应该怎么办」，不要写「为什么要这么做」。
 - **忘了写约束**：「只报告不修改」这类边界一定要写进正文。
-- **权限开太大**：审查类 Skill 根本不需要 Write，见[技巧 16](/blog/workbuddy-tips/16-skill-permission)。
+- **权限开太大**：审查类 Skill 根本不需要 Write，见[技巧 11](/blog/workbuddy-tips/16-skill-permission)。
 - **创建完就不管了**：用几次后根据实际表现迭代 description 和步骤。
 
 ## 六、动手练习与小挑战
@@ -166,6 +166,6 @@ allowed-tools: Read, Grep, Bash(git:diff)
 
 ## 七、延伸阅读或相关技巧
 
-- [技巧 14：读懂 Skill 的 description](/blog/workbuddy-tips/14-skill-trigger) —— 触发机制决定 Skill 会不会被用
-- [技巧 16：给 Skill 上锁](/blog/workbuddy-tips/16-skill-permission) —— allowed-tools 的最小权限原则
-- [技巧 17：context: fork](/blog/workbuddy-tips/17-skill-fork) —— 让 Skill 在隔离上下文里运行
+- [技巧 09：读懂 Skill 的 description](/blog/workbuddy-tips/14-skill-trigger) —— 触发机制决定 Skill 会不会被用
+- [技巧 11：给 Skill 上锁](/blog/workbuddy-tips/16-skill-permission) —— allowed-tools 的最小权限原则
+- [技巧 12：context: fork](/blog/workbuddy-tips/17-skill-fork) —— 让 Skill 在隔离上下文里运行

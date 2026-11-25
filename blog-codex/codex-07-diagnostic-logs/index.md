@@ -1,6 +1,6 @@
 ---
 slug: 07-diagnostic-logs
-title: Codex 07｜用两条计数日志找出文章消失在哪一步
+title: Codex 03｜用两条计数日志找出文章消失在哪一步
 authors: [lbytsl]
 tags: [codex-tips, tutorial]
 date: 2026-11-25

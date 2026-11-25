@@ -1,13 +1,13 @@
 ---
 slug: 17-skill-fork
-title: "技巧 17：context: fork——让 Skill 在隔离上下文里干活"
+title: "技巧 12：context: fork——让 Skill 在隔离上下文里干活"
 authors: [lbytsl]
 tags: [workbuddy-tips, tools]
 date: 2026-11-22
 description: "用 context: fork 把调研类 Skill 丢进独立子代理上下文，只把结论带回主对话，并了解 agent、hooks 等配套字段。"
 ---
 
-# 技巧 17：context: fork——让 Skill 在隔离上下文里干活
+# 技巧 12：context: fork——让 Skill 在隔离上下文里干活
 
 > 一句话概括：给 Skill 加上 `context: fork`，它就会在独立上下文的子代理里执行，不污染主对话。
 
@@ -19,7 +19,7 @@ description: "用 context: fork 把调研类 Skill 丢进独立子代理上下�
 
 **一句话概括**：`context: fork` 让 Skill 拥有自己的上下文窗口和 agent 类型，读入大量文件后只把结论返回主对话。
 
-这是[技巧 11 子代理](/blog/workbuddy-tips/11-subagent)的「固化版」，也是[通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context)的进阶解法。
+这是[技巧 07 子代理](/blog/workbuddy-tips/11-subagent)的「固化版」，也是[通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context)的进阶解法。
 
 ## 二、核心原理与适用场景
 
@@ -48,7 +48,7 @@ description: "用 context: fork 把调研类 Skill 丢进独立子代理上下�
 
 **适用场景**：深度调研、大规模代码搜索、需要读很多文件再给结论的任务。
 
-**不适用场景**：官方特别提醒——`context: fork` 只适用于**包含明确任务**的 Skill。只有指导方针、没有具体任务时，不会产生有意义的输出。比如「项目编码规范」这类背景知识应该用 `user-invocable: false` 的普通 Skill（见[技巧 14](/blog/workbuddy-tips/14-skill-trigger)），不要 fork。
+**不适用场景**：官方特别提醒——`context: fork` 只适用于**包含明确任务**的 Skill。只有指导方针、没有具体任务时，不会产生有意义的输出。比如「项目编码规范」这类背景知识应该用 `user-invocable: false` 的普通 Skill（见[技巧 09](/blog/workbuddy-tips/14-skill-trigger)），不要 fork。
 
 ## 三、错误或低效写法及问题说明
 
@@ -156,12 +156,12 @@ hooks:
 
 ## 六、动手练习与小挑战
 
-**练习**：把[技巧 11](/blog/workbuddy-tips/11-subagent)里那条「调研 token 刷新机制」的指令改写成 fork Skill：加上 `context: fork`、`agent: Explore`、明确的 10 条以内输出格式。触发一次，观察主对话增加了多少内容。
+**练习**：把[技巧 07](/blog/workbuddy-tips/11-subagent)里那条「调研 token 刷新机制」的指令改写成 fork Skill：加上 `context: fork`、`agent: Explore`、明确的 10 条以内输出格式。触发一次，观察主对话增加了多少内容。
 
 **小挑战**：对比同一任务的两种做法——普通 Skill 在主对话调研 vs fork Skill 隔离调研。记录主对话的 token 消耗差异，以及写实现阶段 AI 是否还能准确引用调研结论。
 
 ## 七、延伸阅读或相关技巧
 
-- [技巧 11：让子代理去翻代码](/blog/workbuddy-tips/11-subagent) —— fork 的手工版本
-- [技巧 14：Skill 触发机制](/blog/workbuddy-tips/14-skill-trigger) —— 背景规范类 Skill 该怎么处理
-- [技巧 16：allowed-tools 最小权限](/blog/workbuddy-tips/16-skill-permission) —— 与 fork 配合的安全边界
+- [技巧 07：让子代理去翻代码](/blog/workbuddy-tips/11-subagent) —— fork 的手工版本
+- [技巧 09：Skill 触发机制](/blog/workbuddy-tips/14-skill-trigger) —— 背景规范类 Skill 该怎么处理
+- [技巧 11：allowed-tools 最小权限](/blog/workbuddy-tips/16-skill-permission) —— 与 fork 配合的安全边界

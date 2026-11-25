@@ -1,6 +1,6 @@
 ---
 slug: 10-bounded-diff
-title: Codex 10｜用差异对照，把小修留在小范围内
+title: Codex 06｜用差异对照，把小修留在小范围内
 authors: [lbytsl]
 tags: [codex-tips, tools]
 date: 2026-11-25

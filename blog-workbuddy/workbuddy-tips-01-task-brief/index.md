@@ -82,7 +82,7 @@ WorkBuddy 和 CodeBuddy Code 都是**执行式 Agent**：它们读完你的第�
 - 目标里有具体时限「7 天」，AI 知道该设多长的过期逻辑；
 - 输入给到具体文件路径，配合 `@` 引用（见[技巧 02](/blog/workbuddy-tips/02-at-reference)）可以直接把内容喂进去；
 - 输出具体到文件和测试分支，做完就能逐条打勾（见[通用 01 · 先写验收标准](/blog/general-tips/01-acceptance-criteria)）；
-- 约束里的第 4 条把执行节奏交给你，对应的正是 Plan 模式（见[技巧 05](/blog/workbuddy-tips/05-modes)）。
+- 约束里的第 4 条把执行节奏交给你，对应的正是 Plan 模式（见[技巧 04](/blog/workbuddy-tips/05-modes)）。
 
 在 WorkBuddy 里操作时，再补两个动作：在输入框左下角**选择工作空间**指向项目根目录，然后用 `@` 引用上面三个文件。这样 AI 既知道「去哪找」，也知道「找什么」。
 
@@ -123,4 +123,4 @@ WorkBuddy 和 CodeBuddy Code 都是**执行式 Agent**：它们读完你的第�
 
 - [技巧 02：用 @ 引用把正确的文件交给 AI](/blog/workbuddy-tips/02-at-reference) —— 把「输入」要素落到实处
 - [通用 01 · 先写验收标准](/blog/general-tips/01-acceptance-criteria) —— 强化「输出」要素
-- [技巧 05：Ask / Plan / Craft 三种模式怎么选](/blog/workbuddy-tips/05-modes) —— 落实「约束」里的执行节奏
+- [技巧 04：Ask / Plan / Craft 三种模式怎么选](/blog/workbuddy-tips/05-modes) —— 落实「约束」里的执行节奏

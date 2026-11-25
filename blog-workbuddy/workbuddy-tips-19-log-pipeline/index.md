@@ -1,13 +1,13 @@
 ---
 slug: 19-log-pipeline
-title: 技巧 19：用管道把日志交给 AI——命令行调试工作流
+title: 技巧 13：用管道把日志交给 AI——命令行调试工作流
 authors: [lbytsl]
 tags: [workbuddy-tips, tools, tutorial]
 date: 2026-11-24
 description: 掌握 codebuddy -p 的一次性执行模式与管道输入，把构建错误、测试日志交给 AI 分析，并按格式拿到可解析结果。
 ---
 
-# 技巧 19：用管道把日志交给 AI——命令行调试工作流
+# 技巧 13：用管道把日志交给 AI——命令行调试工作流
 
 > 一句话概括：把命令输出直接管道给 `codebuddy -p`，不用复制粘贴日志，还能让结果以 JSON 形式回到脚本里。
 
@@ -21,7 +21,7 @@ description: 掌握 codebuddy -p 的一次性执行模式与管道输入，把�
 
 **一句话概括**：用 `cat ... | codebuddy -p "..."` 把筛选后的日志交给 AI 一次性分析，适合构建失败、测试报错和自动化流水线。
 
-这是[通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context)的命令行版本，也是[技巧 20 审查流水线](/blog/workbuddy-tips/20-review-pipeline)的基础设施。
+这是[通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context)的命令行版本，也是[技巧 14 审查流水线](/blog/workbuddy-tips/20-review-pipeline)的基础设施。
 
 ## 二、核心原理与适用场景
 
@@ -103,7 +103,7 @@ codebuddy -p '列出这个文件中的潜在 Bug，每项包含 line、severity�
   --output-format json > analysis.json
 ```
 
-拿到 JSON 后脚本就能按 `severity` 决定是否阻塞流水线（这正是[技巧 20](/blog/workbuddy-tips/20-review-pipeline)要做的事）。
+拿到 JSON 后脚本就能按 `severity` 决定是否阻塞流水线（这正是[技巧 14](/blog/workbuddy-tips/20-review-pipeline)要做的事）。
 
 **需要写文件的自动化任务**要加 `-y`：
 
@@ -146,4 +146,4 @@ done
 
 - [通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context) —— 筛选日志的底层理由
 - [通用 05 · 最小复现](/blog/general-tips/05-minimal-repro) —— 交互式调试的上下文组织方式
-- [技巧 20：代码审查流水线](/blog/workbuddy-tips/20-review-pipeline) —— 把管道用法接入 CI
+- [技巧 14：代码审查流水线](/blog/workbuddy-tips/20-review-pipeline) —— 把管道用法接入 CI

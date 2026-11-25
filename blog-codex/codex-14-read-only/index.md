@@ -1,6 +1,6 @@
 ---
 slug: 14-read-only
-title: Codex 14｜先用只读权限调查，再决定要不要改
+title: Codex 09｜先用只读权限调查，再决定要不要改
 authors: [lbytsl]
 tags: [codex-tips, tools]
 date: 2026-11-25
@@ -56,7 +56,7 @@ codex exec --sandbox read-only "只阅读 package.json。不执行脚本，不�
 ## 延伸阅读与相关技巧
 
 - [OpenAI：权限与沙箱](https://learn.chatgpt.com/docs/permissions)。
-- [05 · 用 AGENTS.md 记录可验证的命令](/blog/codex-tips/05-agents-md)：把「应该如何做」和「工具可以做什么」分清。
-- [18 · 查官方文档而不暴露项目数据](/blog/codex-tips/18-docs-mcp)：本地只读和远端工具授权是不同边界。
+- [02 · 用 AGENTS.md 记录可验证的命令](/blog/codex-tips/05-agents-md)：把「应该如何做」和「工具可以做什么」分清。
+- [12 · 查官方文档而不暴露项目数据](/blog/codex-tips/18-docs-mcp)：本地只读和远端工具授权是不同边界。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

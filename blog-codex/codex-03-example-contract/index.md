@@ -1,6 +1,6 @@
 ---
 slug: 03-example-contract
-title: Codex 03｜用一张样例表讲清阅读时间怎么算
+title: Codex 01｜用一张样例表讲清阅读时间怎么算
 authors: [lbytsl]
 tags: [codex-tips, prompt-engineering]
 date: 2026-11-25
@@ -61,7 +61,7 @@ for (const [words, expected] of [[0, 0], [1, 1], [299, 1], [300, 1], [301, 2]]) 
 
 ## 延伸阅读与相关技巧
 
-- [09 · 给时间一个固定的「现在」](/blog/codex-tips/09-fixed-clock) 把同样的边界思路用到定时发布。
-- [11 · 保住调用方的接口契约](/blog/codex-tips/11-api-contract) 把表里的约定延伸到对外数据格式。
+- [05 · 给时间一个固定的「现在」](/blog/codex-tips/09-fixed-clock) 把同样的边界思路用到定时发布。
+- [07 · 保住调用方的接口契约](/blog/codex-tips/11-api-contract) 把表里的约定延伸到对外数据格式。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)

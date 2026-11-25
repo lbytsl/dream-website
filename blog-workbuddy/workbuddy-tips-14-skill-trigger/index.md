@@ -1,13 +1,13 @@
 ---
 slug: 14-skill-trigger
-title: 技巧 14：Skill 是怎么被触发的？读懂 description
+title: 技巧 09：Skill 是怎么被触发的？读懂 description
 authors: [lbytsl]
 tags: [workbuddy-tips, tools]
 date: 2026-11-19
 description: 搞清 Skill 与斜杠命令的区别，以及 AI 依据什么决定调用哪个 Skill——description 写得好不好，决定它会不会被用上。
 ---
 
-# 技巧 14：Skill 是怎么被触发的？读懂 description
+# 技巧 09：Skill 是怎么被触发的？读懂 description
 
 > 一句话概括：Skill 由 AI 自动识别调用，而 AI 判断的依据主要是 description——它写清楚「什么时候用」，比写清楚「是什么」更重要。
 
@@ -127,6 +127,6 @@ allowed-tools: Read, Grep, Bash(git:diff)
 
 ## 七、延伸阅读或相关技巧
 
-- [技巧 15：从零创建你的第一个 Skill](/blog/workbuddy-tips/15-first-skill) —— 把 description 放进完整 SKILL.md
-- [技巧 16：给 Skill 上锁](/blog/workbuddy-tips/16-skill-permission) —— allowed-tools 怎么写
-- [技巧 04：流程比角色更重要](/blog/workbuddy-tips/04-process-over-role) —— Skill 正文本质就是流程化提示词
+- [技巧 10：从零创建你的第一个 Skill](/blog/workbuddy-tips/15-first-skill) —— 把 description 放进完整 SKILL.md
+- [技巧 11：给 Skill 上锁](/blog/workbuddy-tips/16-skill-permission) —— allowed-tools 怎么写
+- [技巧 03：流程比角色更重要](/blog/workbuddy-tips/04-process-over-role) —— Skill 正文本质就是流程化提示词

@@ -1,13 +1,13 @@
 ---
 slug: 16-skill-permission
-title: 技巧 16：给 Skill 上锁——allowed-tools 与权限最小化
+title: 技巧 11：给 Skill 上锁——allowed-tools 与权限最小化
 authors: [lbytsl]
 tags: [workbuddy-tips, tools]
 date: 2026-11-21
 description: 用 allowed-tools 白名单把 Skill 限制在它真正需要的工具范围内，减少误操作，也让 AI 更准确判断该不该调用它。
 ---
 
-# 技巧 16：给 Skill 上锁——allowed-tools 与权限最小化
+# 技巧 11：给 Skill 上锁——allowed-tools 与权限最小化
 
 > 一句话概括：审查类 Skill 不该有写文件的权限——只给它真正需要的工具，既安全又能提升触发准确率。
 
@@ -34,7 +34,7 @@ allowed-tools: Read, Write, Bash, WebFetch
 它有两层作用：
 
 1. **安全边界**：Skill 只能调用白名单里的工具，写不写文件、能不能跑命令都由你定；
-2. **触发信号**：AI 选择 Skill 时会看「任务所需工具是否在白名单内」（见[技巧 14](/blog/workbuddy-tips/14-skill-trigger)）。权限写对了，触发判断也更准。
+2. **触发信号**：AI 选择 Skill 时会看「任务所需工具是否在白名单内」（见[技巧 09](/blog/workbuddy-tips/14-skill-trigger)）。权限写对了，触发判断也更准。
 
 工具支持模式匹配，可以精确到子命令或路径：
 
@@ -70,7 +70,7 @@ allowed-tools: Read
 
 ## 四、正确应用方式：给审查 Skill 配权限
 
-延续[技巧 15 创建的 PR 审查 Skill](/blog/workbuddy-tips/15-first-skill)，它的实际需要是：读文件、搜索、执行 Git 只读命令。写出来就是：
+延续[技巧 10 创建的 PR 审查 Skill](/blog/workbuddy-tips/15-first-skill)，它的实际需要是：读文件、搜索、执行 Git 只读命令。写出来就是：
 
 ```yaml
 ---
@@ -150,6 +150,6 @@ user-invocable: false
 
 ## 七、延伸阅读或相关技巧
 
-- [技巧 14：Skill 是怎么被触发的](/blog/workbuddy-tips/14-skill-trigger) —— 权限是 AI 判断调用的依据之一
-- [技巧 15：从零创建你的第一个 Skill](/blog/workbuddy-tips/15-first-skill) —— 完整的 SKILL.md 结构
-- [技巧 17：context: fork](/blog/workbuddy-tips/17-skill-fork) —— 另一种隔离手段：独立上下文
+- [技巧 09：Skill 是怎么被触发的](/blog/workbuddy-tips/14-skill-trigger) —— 权限是 AI 判断调用的依据之一
+- [技巧 10：从零创建你的第一个 Skill](/blog/workbuddy-tips/15-first-skill) —— 完整的 SKILL.md 结构
+- [技巧 12：context: fork](/blog/workbuddy-tips/17-skill-fork) —— 另一种隔离手段：独立上下文

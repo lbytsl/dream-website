@@ -1,13 +1,13 @@
 ---
 slug: 11-subagent
-title: 技巧 11：让子代理去翻代码——把上下文留给实现
+title: 技巧 07：让子代理去翻代码——把上下文留给实现
 authors: [lbytsl]
 tags: [workbuddy-tips, tutorial]
 date: 2026-11-16
 description: 用子代理在独立上下文中完成调研和审查，只把结论带回主对话，避免几十个文件把上下文撑爆。
 ---
 
-# 技巧 11：让子代理去翻代码——把上下文留给实现
+# 技巧 07：让子代理去翻代码——把上下文留给实现
 
 > 一句话概括：探索交给子代理，结论回到主对话——主上下文只留决策所需的信息。
 
@@ -94,7 +94,7 @@ Use a subagent to review this implementation for edge cases:
 
 **进阶：把子代理固化成 Skill**
 
-如果这类调研经常做，可以用 `context: fork` 把它写进 Skill（见[技巧 17](/blog/workbuddy-tips/17-skill-fork)），一行指令就能启动一个隔离上下文里的专职代理。
+如果这类调研经常做，可以用 `context: fork` 把它写进 Skill（见[技巧 12](/blog/workbuddy-tips/17-skill-fork)），一行指令就能启动一个隔离上下文里的专职代理。
 
 ## 五、关键点与常见陷阱
 
@@ -122,4 +122,4 @@ Use a subagent to review this implementation for edge cases:
 
 - [通用 02 · 从入口收集上下文](/blog/general-tips/02-focused-context) —— 子代理解决的是同一个约束
 - [通用 07 · 证据式代码审查](/blog/general-tips/07-evidence-based-review) —— 审查是子代理的典型用途
-- [技巧 17：context: fork 让 Skill 在隔离上下文运行](/blog/workbuddy-tips/17-skill-fork) —— 把子代理固化成 Skill
+- [技巧 12：context: fork 让 Skill 在隔离上下文运行](/blog/workbuddy-tips/17-skill-fork) —— 把子代理固化成 Skill

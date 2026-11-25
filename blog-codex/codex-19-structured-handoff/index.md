@@ -1,6 +1,6 @@
 ---
 slug: 19-structured-handoff
-title: Codex 19｜用 codex exec 生成下一步能读取的交接报告
+title: Codex 13｜用 codex exec 生成下一步能读取的交接报告
 authors: [lbytsl]
 tags: [codex-tips, tools]
 date: 2026-11-25
@@ -64,6 +64,6 @@ codex exec --sandbox read-only --output-schema handoff.schema.json -o handoff.js
 ## 延伸阅读与相关技巧
 
 - [OpenAI：非交互模式和结构化最终输出](https://learn.chatgpt.com/docs/non-interactive-mode)。
-- [17 · 让脚本产生确定的检查结果](/blog/codex-tips/17-skill-script) 提供可信输入；[20 · 验收读者真实路径](/blog/codex-tips/20-reader-smoke-test) 提供值得交接的证据。
+- [11 · 让脚本产生确定的检查结果](/blog/codex-tips/17-skill-script) 提供可信输入；[14 · 验收读者真实路径](/blog/codex-tips/20-reader-smoke-test) 提供值得交接的证据。
 
 [返回「Codex 使用技巧」系列目录](/blog/codex-tips)
