@@ -141,7 +141,10 @@ const root = path.resolve(__dirname, "..");
 const blogPosts = parseBlogPosts(path.join(root, "blog"));
 
 const stats = {
-  articles: blogPosts.length,
+  articles: blogPosts.length + ["blog-codex", "blog-workbuddy", "blog-general"].reduce(
+    (total, dir) => total + parseBlogPosts(path.join(root, dir)).length,
+    0,
+  ),
   prompts: countPromptEntries(path.join(root, "docs", "prompt")),
   skills: countSkillEntries(path.join(root, "docs", "skills")),
 };

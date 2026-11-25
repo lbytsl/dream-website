@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 510" role="img" aria-labelledby="title desc">
+  <title id="title">Codex 使用技巧系列封面</title>
+  <desc id="desc">一本打开的练习手册，左页是任务说明，右页是通过的检查。</desc>
+  <rect width="1200" height="510" fill="#191b27"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="82" y="226" font-size="100" fill="#f6f5ff" font-weight="700">Codex</text>
+    <text x="86" y="308" font-size="45" fill="#c8c7ed">使用技巧</text>
+    <path d="M86 374h356" stroke="#68698a" stroke-width="2"/>
+    <text x="86" y="415" font-size="23" fill="#babbd0">01 — 20</text>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M826 146q-59-33-181-23v253q112-11 181 24 70-35 181-24V123q-122-10-181 23Z" fill="#26283b" stroke="#b9b6ff" stroke-width="5"/>
+    <path d="M826 148v246M680 187q45-2 96 13m-96 31q48 0 82 12m-82 31q36 0 63 8" stroke="#777594" stroke-width="6"/>
+    <g stroke="#bdb9ff" stroke-width="7"><path d="m865 191 9 10 18-23m-27 61 9 10 18-23m-27 61 9 10 18-23"/><path d="m915 184 53-5m-53 53 53-5m-53 53 36-4"/></g>
+  </g>
+</svg>

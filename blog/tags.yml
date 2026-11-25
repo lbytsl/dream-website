@@ -32,3 +32,18 @@ promptops:
   label: PromptOps
   permalink: /promptops
   description: Prompt质量工程相关文章
+
+workbuddy-tips:
+  label: WorkBuddy / CodeBuddy 使用技巧
+  permalink: /workbuddy-tips
+  description: 面向初学者的 WorkBuddy 与 CodeBuddy 编程实战技巧系列，涵盖提示词设计、Skills、任务拆解、上下文管理、调试协作与代码审查
+
+codex-tips:
+  label: Codex 使用技巧
+  permalink: /codex-tips
+  description: 用一个练习文章站，学习提示词、调试、代码审阅、Skills 和交付验收。
+
+general-tips:
+  label: 通用技巧
+  permalink: /general-tips
+  description: 不依赖具体工具的 AI 编程方法，从需求和调试到审查与交付。

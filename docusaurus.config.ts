@@ -3,6 +3,9 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import type { Options as BlogOptions } from "@docusaurus/plugin-content-blog";
+import blogSeriesSidebar from "./plugins/blog-series-sidebar";
+import { blogSeriesRedirects } from "./plugins/blog-series-redirects";
 
 const config: Config = {
   title: "Dream — AI 开发前沿技术平台",
@@ -225,7 +228,36 @@ const config: Config = {
   // ============================================================
   // Plugins
   // ============================================================
-  plugins: [],
+  plugins: [
+    blogSeriesSidebar,
+    ["@docusaurus/plugin-client-redirects", { redirects: blogSeriesRedirects }],
+    ...[
+      { id: "general-tips", path: "blog-general", blogTitle: "通用技巧" },
+      { id: "codex-tips", path: "blog-codex", blogTitle: "Codex 使用技巧" },
+      { id: "workbuddy-tips", path: "blog-workbuddy", blogTitle: "WorkBuddy / CodeBuddy 使用技巧" },
+    ].map(({ id, path, blogTitle }): [string, BlogOptions] => [
+      "@docusaurus/plugin-content-blog",
+      {
+        id,
+        path,
+        blogTitle,
+        routeBasePath: `blog/${id}`,
+        blogSidebarCount: "ALL",
+        postsPerPage: "ALL",
+        authorsMapPath: "../blog/authors.yml",
+        tags: "../blog/tags.yml",
+        feedOptions: { type: null },
+        showReadingTime: true,
+        readingTime: ({ content, locale, defaultReadingTime }) =>
+          defaultReadingTime({ content, locale, options: { wordsPerMinute: 300 } }),
+        editUrl: "https://github.com/lbytsl/dream-website/tree/master/",
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
+        processBlogPosts: async ({ blogPosts }) =>
+          [...blogPosts].sort((a, b) => a.metadata.permalink.localeCompare(b.metadata.permalink)),
+      },
+    ]),
+  ],
 
   // Markdown 开关需配合主题加载，才能在博文正文中实际渲染流程图。
   themes: ["@docusaurus/theme-mermaid"],
